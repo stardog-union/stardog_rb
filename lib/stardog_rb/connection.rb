@@ -26,7 +26,8 @@ module StardogRb
       uri = self.uri(*resource)
       request = Net::HTTP::Post.new(uri)
       request.basic_auth(@username, @password)
-      request.set_form_data(*form_data) unless form_data.empty?
+      request.content_type = 'application/json'
+      request.body = form_data.to_json unless form_data.empty?
       request
     end
 
