@@ -1,4 +1,5 @@
 require 'net/http'
+require 'net/http/post/multipart'
 
 module StardogRb
   # Hold connection information
@@ -28,6 +29,13 @@ module StardogRb
       request.basic_auth(@username, @password)
       request.content_type = 'application/json'
       request.body = form_data.to_json unless form_data.empty?
+      request
+    end
+
+    def post_multipart_request(form_data, *resource)
+      uri = self.uri(*resource)
+      request = Net::HTTP::Post::Multipart.new(uri, form_data)
+      request.basic_auth(@username, @password)
       request
     end
 
