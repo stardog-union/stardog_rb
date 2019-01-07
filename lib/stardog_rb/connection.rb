@@ -39,6 +39,13 @@ module StardogRb
       request
     end
 
+    def delete_request(*resource)
+      uri = self.uri(*resource)
+      request = Net::HTTP::Delete.new(uri)
+      request.basic_auth(@username, @password)
+      request
+    end
+
     def response(request, accept = '*/*')
       Net::HTTP.start(@endpoint_uri.host, @endpoint_uri.port) do |http|
         request['Accept'] = accept
