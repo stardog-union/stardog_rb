@@ -24,9 +24,94 @@ Or install it yourself as:
 
     $ gem install stardog_rb
 
-## Usage
+## Quick Example
 
-TODO: Write usage instructions here
+``` ruby
+require 'stardog_rb'
+
+conn = StardogRb::Connection.new(
+  endpoint => 'http://localhost:5820',
+  username => 'admin',
+  password => 'admin'
+)
+
+StardogRb::Server.status(conn)
+```
+
+## API
+
+### Response
+
+Functions that make an HTTP request return a [`Net::HTTPResponse`](https://ruby-doc.org/stdlib-2.5.3/libdoc/net/http/rdoc/Net/HTTPResponse.html)
+
+### Connection
+
+Holds the connection information for the Stardog server.
+
+Constructed with:
+
+- endpoint (`String`)
+- username (`String`)
+- password (`String`)
+
+### Server
+
+#### `Server.status(conn)`
+
+Retrieves general status information about a Stardog server.
+
+Expects the following parameters:
+
+- conn ([`Connection`](#connection))
+
+Returns a [`Net::HTTPResponse`](#response)
+
+#### `Server.shutdown(conn)`
+
+Shuts down a Stardog server.
+
+Expects the following parameters:
+
+- conn ([`Connection`](#connection))
+
+Returns a [`Net::HTTPResponse`](#response)
+
+### Db::Db
+
+Manage databases on the Stardog server.
+
+#### `Db.list(conn)`
+
+Gets a list of all databases on a Stardog server.
+
+Expects the following parameters:
+
+- conn ([`Connection`](#connection))
+
+Returns a [`Net::HTTPResponse`](#response)
+
+#### `Db.create(conn, database_name, options)`
+
+Creates a new database.
+
+Expects the following parameters:
+
+- conn ([`Connection`](#connection))
+- database_name (`String`)
+- options (`Hash`)
+
+Returns a [`Net::HTTPResponse`](#response)
+
+#### `Db.drop(conn, database_name)`
+
+Deletes a database.
+
+Expects the following parameters:
+
+- conn ([`Connection`](#connection))
+- database_name (`String`)
+
+Returns a [`Net::HTTPResponse`](#response)
 
 ## Development
 
