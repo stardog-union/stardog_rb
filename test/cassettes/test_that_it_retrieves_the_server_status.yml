@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:5820/admin/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:5820
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 08 Jan 2019 14:36:17 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"databases.foo.planCache.size":{"value":0},"dbms.home":{"value":"/data/stardog"},"dbms.spilling.max.file.length":{"value":"10g"},"user.threads.size":{"value":32},"databases.beatles.openConnections":{"count":0},"dbms.query.pp.contexts":{"value":"false"},"dbms.krb5.user.translation.regex":{"value":""},"databases.beatles.queries.speed":{"count":3,"max":0.0,"mean":0.0,"min":0.0,"p50":0.0,"p75":0.0,"p95":0.0,"p98":0.0,"p99":0.0,"p999":0.0,"stddev":0.0,"m15_rate":1.8060998576496586E-7,"m1_rate":5.097394737470235E-66,"m5_rate":1.5907478628425712E-15,"mean_rate":3.38876019535799E-4,"duration_units":"seconds","rate_units":"calls/second"},"databases.test3.planCache.ratio":{"value":"NaN"},"databases.test3.queries.running":{"count":0},"dbms.memory.monitor.report.threshold":{"value":"0.9"},"dbms.mem.mapped.used":{"value":16777216},"dbms.upgrade.automatic":{"value":"false"},"dbms.memory.heap.reserve":{"value":""},"dbms.security.disabled":{"value":"false"},"dbms.mem.direct.buffer.used":{"value":126976},"dbms.strict.parsing":{"value":"true"},"dbms.password.length.min":{"value":"4"},"dbms.krb5.debug":{"value":"false"},"dbms.memory.mode":{"value":"DEFAULT"},"dbms.mem.heap.max":{"value":2058354688},"dbms.data.dir":{"value":"/var/folders/1_/c7tp859919x7sjny8x59yq_r0000gp/T"},"databases.beatles.planCache.size":{"value":4},"dbms.credentials.cache.loadFailures":{"value":0},"dbms.metrics.enabled":{"value":"true"},"dbms.thread.pool.user.size":{"value":"32"},"com.stardog.http.server-5820.currentRequests":{"count":1},"dbms.server.port":{"value":"5820"},"databases.test5.queries.running":{"count":0},"user.threads.active":{"value":0},"system.os":{"value":"Mac
+        OS X 10.14.2, Java 1.8.0_192"},"dbms.spilling.dir":{"value":".spilling"},"dbms.password.length.max":{"value":"1024"},"dbms.security.named.graphs.empty.allows.access":{"value":"false"},"dbms.password.regex":{"value":"[\\w@#$%!&]+"},"dbms.memory.managed.direct":{"value":""},"dbms.backup.dir":{"value":".backup"},"dbms.memory.direct.reserve":{"value":""},"dbms.mem.heap.used":{"value":84453160},"dbms.page.cache.weight":{"value":44672},"dbms.page.cache.size":{"value":4},"databases.beatles.txns.openTransactions":{"count":0},"dbms.export.dir":{"value":".exports"},"system.arch":{"value":"x86_64"},"databases.test2.queries.running":{"count":0},"admin.threads.active":{"value":1},"dbms.mem.direct.buffer.max":{"value":281857228},"dbms.cors.allowed.origins":{"value":"[]"},"dbms.mem.direct.pool.max":{"value":402653184},"databases.test5.planCache.ratio":{"value":"NaN"},"dbms.memory.monitor.interval":{"value":"600000"},"databases.test2.planCache.ratio":{"value":"NaN"},"databases.beatles.state":{"value":"Online"},"dbms.credentials.cache.evictions":{"value":0},"dbms.database.connection.timeout":{"value":"10m"},"databases.test.planCache.ratio":{"value":0.8},"dbms.mem.mapped.max":{"value":120795955},"databases.test.planCache.size":{"value":4},"databases.beatles.planCache.ratio":{"value":0.5454545454545454},"admin.threads.queued":{"value":0},"dbms.credentials.cache.misses":{"value":1},"dbms.mem.direct.used":{"value":424501129},"dbms.query.timeout":{"value":"5m"},"dbms.credentials.cache.size":{"value":1},"admin.threads.size":{"value":64},"dbms.memory.management":{"value":"NATIVE"},"databases.beatles.size":{"value":28},"databases.system.planCache.size":{"value":0},"dbms.logging.connection.events.enabled":{"value":"true"},"system.uptime":{"value":16102113},"databases.beatles.queries.running":{"count":0},"dbms.ALLOCATE_IMMEDIATELY":{"value":"true"},"databases.test.queries.running":{"count":0},"databases.foo.planCache.ratio":{"value":"NaN"},"databases.system.planCache.ratio":{"value":0.9541984732824428},"dbms.rotate.old.tx.logs":{"value":"false"},"databases.test2.planCache.size":{"value":0},"dbms.logging.connection.startend.events.enabled":{"value":"true"},"dbms.backup.autorestore.onfailure":{"value":"false"},"databases.foo.queries.running":{"count":0},"dbms.type":{"value":"Enterprise"},"databases.test3.planCache.size":{"value":0},"user.threads.queued":{"value":0},"dbms.query.timeout.override.enabled":{"value":"true"},"dbms.thread.pool.admin.size":{"value":"64"},"dbms.mem.direct.pool.used":{"value":0},"com.stardog.http.server-5820.avgRequestTime":{"count":1496,"max":12,"mean":6.0,"min":0,"p50":12.0,"p75":12.0,"p95":12.0,"p98":12.0,"p99":12.0,"p999":12.0,"stddev":6.0},"dbms.credentials.cache.loadSuccesses":{"value":1},"dbms.pack.enabled":{"value":"false"},"databases.beatles.txns.size":{"count":1,"max":0,"mean":0.0,"min":0,"p50":0.0,"p75":0.0,"p95":0.0,"p98":0.0,"p99":0.0,"p999":0.0,"stddev":0.0},"dbms.credentials.cache.hits":{"value":1496},"databases.beatles.txns.speed":{"count":1,"max":0.0,"mean":0.0,"min":0.0,"p50":0.0,"p75":0.0,"p95":0.0,"p98":0.0,"p99":0.0,"p999":0.0,"stddev":0.0,"m15_rate":1.07864947741991E-5,"m1_rate":1.900137905750293E-65,"m5_rate":3.137480395992726E-14,"mean_rate":1.1295857955333144E-4,"duration_units":"seconds","rate_units":"calls/second"},"dbms.page.cache.ratio":{"value":0.38644840447575635},"dbms.security.disable.password":{"value":"false"},"dbms.version":{"value":"6.0.1"},"databases.test5.planCache.size":{"value":0},"system.cpu.usage":{"value":0.0071205738462548},"dbms.security.realms":{"value":"stardog"},"dbms.query.all.graphs":{"value":"false"},"dbms.mem.heap.pool.used":{"value":0},"dbms.mem.direct.max":{"value":1073741824},"dbms.memory.managed.heap":{"value":""},"dbms.id":{"value":"3fa50dd5-612a-4198-b9cc-2329b537e12d"},"dbms.mem.heap.pool.max":{"value":0}}'
+    http_version: 
+  recorded_at: Tue, 08 Jan 2019 14:36:17 GMT
+recorded_with: VCR 4.0.0
