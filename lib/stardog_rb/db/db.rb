@@ -1,5 +1,3 @@
-require 'json'
-
 module StardogRb
   module Db
     # Control databases on the Stardog server
