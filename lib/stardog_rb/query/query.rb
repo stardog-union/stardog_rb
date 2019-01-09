@@ -1,0 +1,52 @@
+module StardogRb
+  # Query Stardog databases
+  class Query
+    class << self
+      def remove_sparql_prologue(query)
+        prefix_reg = /prefix[^:]+:\s*<[^>]*>\s*/i
+        base_reg = /^((base\s+<[^>]*>\s*)|([\t ]*#([^\n\r]*)))([\r|\r\n|\n])/im
+
+        query
+          .gsub(prefix_reg, '')
+          .gsub(base_reg, '')
+          .gsub(/\s/, '')
+          .downcase
+      end
+
+      def query_type(query)
+        q = remove_sparql_prologue(query)
+
+        type = %w[select ask construct describe].find { |t| q.start_with?(t) }
+        return type if type
+
+        update_types = %w[
+          insert delete with load clear create drop copy move add
+        ]
+        return 'update' if update_types.any? { |t| q.start_with?(t) }
+
+        return 'paths' if q.start_with?('paths')
+      end
+
+      def mime_type(query)
+        case query_type(query)
+        when 'select', 'paths'
+          'application/sparql-results+json'
+        when 'ask', 'update'
+          'text/boolean'
+        when 'construct', 'describe'
+          'text/turtle'
+        else
+          '*/*'
+        end
+      end
+
+      def execute(conn, database, query, params = {})
+        type = Query.query_type(query)
+        resource = type == 'update' ? 'update' : 'query'
+        request = conn.post_request(query, params, database, resource)
+        request.content_type = 'application/sparql-query'
+        conn.response(request, Query.mime_type(query))
+      end
+    end
+  end
+end
