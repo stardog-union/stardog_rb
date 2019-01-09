@@ -11,7 +11,7 @@ module StardogRb
       end
 
       def shutdown(conn)
-        request = conn.post_request({}, 'admin', 'shutdown')
+        request = conn.post_request({}, {}, 'admin', 'shutdown')
         conn.response(request, 'application/json')
       end
     end

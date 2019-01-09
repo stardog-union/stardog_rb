@@ -23,12 +23,12 @@ module StardogRb
       request
     end
 
-    def post_request(form_data, *resource)
+    def post_request(form_data, params, *resource)
       uri = self.uri(*resource)
+      uri.query = URI.encode_www_form(params)
       request = Net::HTTP::Post.new(uri)
       request.basic_auth(@username, @password)
-      request.content_type = 'application/json'
-      request.body = form_data.to_json unless form_data.empty?
+      request.body = form_data unless form_data.empty?
       request
     end
 
