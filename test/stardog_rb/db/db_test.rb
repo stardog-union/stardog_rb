@@ -16,7 +16,7 @@ class DbTest < Minitest::Test
     response = StardogRb::Db::Db.list(@conn)
     response_json = JSON.parse(response.body)
     assert response.code == '200'
-    assert response.content_type = 'application/json'
+    assert response.content_type == 'application/json'
     assert response_json.key?('databases')
   end
 
@@ -25,7 +25,7 @@ class DbTest < Minitest::Test
     response_json = JSON.parse(response.body)
     message = response_json['message']
     assert response.code == '201'
-    assert response.content_type = 'application/json'
+    assert response.content_type == 'application/json'
     assert message.start_with?('Successfully created database')
   end
 
@@ -34,7 +34,7 @@ class DbTest < Minitest::Test
     response_json = JSON.parse(response.body)
     message = response_json['message']
     assert response.code == '200'
-    assert response.content_type = 'application/json'
+    assert response.content_type == 'application/json'
     assert message.end_with?('was successfully dropped.')
   end
 end
