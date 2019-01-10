@@ -29,9 +29,15 @@ class DbTest < Minitest::Test
     assert message.start_with?('Successfully created database')
   end
 
-  # def test_create_db_with_options
-  #   assert false
-  # end
+  def test_db_create_with_options
+    options = { 'reasoning.type' => 'DL' }
+    response = StardogRb::Db::Db.create(@conn, 'beatles', options)
+    response_json = JSON.parse(response.body)
+    message = response_json['message']
+    assert response.code == '201'
+    assert response.content_type == 'application/json'
+    assert message.start_with?('Successfully created database')
+  end
 
   def test_db_drop
     response = StardogRb::Db::Db.drop(@conn, 'beatles')
