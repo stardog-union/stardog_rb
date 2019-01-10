@@ -35,6 +35,20 @@ module StardogRb
           request = conn.put_request({}, {}, *path)
           conn.response(request)
         end
+
+        def set_options(conn, database, options)
+          path = ['admin', 'databases', database, 'options']
+          request = conn.post_request(options.to_json, {}, *path)
+          request.content_type = 'application/json'
+          conn.response(request, 'application/json')
+        end
+
+        def get_options(conn, database, options)
+          path = ['admin', 'databases', database, 'options']
+          request = conn.put_request(options.to_json, {}, *path)
+          request.content_type = 'application/json'
+          conn.response(request, 'application/json')
+        end
       end
     end
   end

@@ -59,4 +59,27 @@ class DbTest < Minitest::Test
     assert response.content_type == 'application/json'
     assert message.end_with?('was successfully set offline.')
   end
+
+  def test_db_set_options
+    options = {
+      'search.enabled' => true,
+      'reasoning.type' => 'DL'
+    }
+    response = StardogRb::Db::Db.set_options(@conn, 'beatles', options)
+    assert response.code == '200'
+    assert response.body =~ /option.*were successfully set/
+  end
+
+  def test_db_get_options
+    options = {
+      'search.enabled' => nil,
+      'reasoning.type' => nil
+    }
+    response = StardogRb::Db::Db.get_options(@conn, 'beatles', options)
+    response_json = JSON.parse(response.body)
+    assert response.code == '200'
+    assert response_json.key? 'search.enabled'
+    assert response_json.key? 'reasoning.type'
+    refute response_json.key? 'database.online'
+  end
 end

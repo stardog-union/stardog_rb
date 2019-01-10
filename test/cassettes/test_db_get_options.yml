@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: http://localhost:5820/admin/databases/beatles/options
+    body:
+      encoding: UTF-8
+      string: '{"search.enabled":null,"reasoning.type":null}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:5820
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 10 Jan 2019 14:22:12 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "search.enabled": true,
+          "reasoning.type": "DL"
+        }
+    http_version: 
+  recorded_at: Thu, 10 Jan 2019 14:22:12 GMT
+recorded_with: VCR 4.0.0
