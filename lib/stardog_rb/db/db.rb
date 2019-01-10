@@ -23,6 +23,18 @@ module StardogRb
           request = conn.delete_request('admin', 'databases', database)
           conn.response(request)
         end
+
+        def online(conn, database)
+          path = ['admin', 'databases', database, 'online']
+          request = conn.put_request({}, {}, *path)
+          conn.response(request)
+        end
+
+        def offline(conn, database)
+          path = ['admin', 'databases', database, 'offline']
+          request = conn.put_request({}, {}, *path)
+          conn.response(request)
+        end
       end
     end
   end

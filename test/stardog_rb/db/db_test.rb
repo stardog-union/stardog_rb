@@ -29,6 +29,10 @@ class DbTest < Minitest::Test
     assert message.start_with?('Successfully created database')
   end
 
+  # def test_create_db_with_options
+  #   assert false
+  # end
+
   def test_db_drop
     response = StardogRb::Db::Db.drop(@conn, 'beatles')
     response_json = JSON.parse(response.body)
@@ -36,5 +40,23 @@ class DbTest < Minitest::Test
     assert response.code == '200'
     assert response.content_type == 'application/json'
     assert message.end_with?('was successfully dropped.')
+  end
+
+  def test_db_online
+    response = StardogRb::Db::Db.online(@conn, 'beatles')
+    response_json = JSON.parse(response.body)
+    message = response_json['message']
+    assert response.code == '200'
+    assert response.content_type == 'application/json'
+    assert message.end_with?('was successfully brought online')
+  end
+
+  def test_db_offline
+    response = StardogRb::Db::Db.offline(@conn, 'beatles')
+    response_json = JSON.parse(response.body)
+    message = response_json['message']
+    assert response.code == '200'
+    assert response.content_type == 'application/json'
+    assert message.end_with?('was successfully set offline.')
   end
 end
