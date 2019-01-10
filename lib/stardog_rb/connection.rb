@@ -39,6 +39,15 @@ module StardogRb
       request
     end
 
+    def put_request(form_data, params, *resource)
+      uri = self.uri(*resource)
+      uri.query = URI.encode_www_form(params)
+      request = Net::HTTP::Put.new(uri)
+      request.basic_auth(@username, @password)
+      request.body = form_data unless form_data.empty?
+      request
+    end
+
     def delete_request(*resource)
       uri = self.uri(*resource)
       request = Net::HTTP::Delete.new(uri)
