@@ -38,6 +38,15 @@ class QueryTest < Minitest::Test
     assert response.content_type == 'application/ld+json'
   end
 
+  def test_query_limit_param
+    query = 'select * where { graph <movie:starwars> { ?c a :Human } }'
+    response = StardogRb::Query.execute(@conn, 'test_db', query, 'limit' => 3)
+    json_response = JSON.parse(response.body)
+    assert response.code == '200'
+    assert response.content_type == 'application/sparql-results+json'
+    assert json_response['results']['bindings'].length == 3
+  end
+
   def test_ask_query_true
     query = 'ask { graph <movie:starwars> {:luke a :Human }}'
     response = StardogRb::Query.execute(@conn, 'test_db', query)
