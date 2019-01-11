@@ -1,0 +1,127 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:5820/test_db/query
+    body:
+      encoding: UTF-8
+      string: construct where { ?s ?p ?o }
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/ld+json
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:5820
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+      Content-Type:
+      - application/sparql-query
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Sd-Query-Id:
+      - '66'
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/ld+json
+      Date:
+      - Fri, 11 Jan 2019 22:05:12 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "@id" : "http://api.stardog.com/George_Harrison",
+          "@type" : [ "http://api.stardog.com/SoloArtist" ]
+        }, {
+          "@id" : "http://api.stardog.com/Imagine",
+          "@type" : [ "http://api.stardog.com/Album" ],
+          "http://api.stardog.com/artist" : [ {
+            "@id" : "http://api.stardog.com/John_Lennon"
+          } ],
+          "http://api.stardog.com/date" : [ {
+            "@type" : "http://www.w3.org/2001/XMLSchema#date",
+            "@value" : "1971-10-11"
+          } ],
+          "http://api.stardog.com/name" : [ {
+            "@value" : "Imagine"
+          } ]
+        }, {
+          "@id" : "http://api.stardog.com/John_Lennon",
+          "@type" : [ "http://api.stardog.com/SoloArtist" ]
+        }, {
+          "@id" : "http://api.stardog.com/Love_Me_Do",
+          "@type" : [ "http://api.stardog.com/Song" ],
+          "http://api.stardog.com/length" : [ {
+            "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+            "@value" : "125"
+          } ],
+          "http://api.stardog.com/name" : [ {
+            "@value" : "Love Me Do"
+          } ],
+          "http://api.stardog.com/writer" : [ {
+            "@id" : "http://api.stardog.com/John_Lennon"
+          }, {
+            "@id" : "http://api.stardog.com/Paul_McCartney"
+          } ]
+        }, {
+          "@id" : "http://api.stardog.com/McCartney",
+          "@type" : [ "http://api.stardog.com/Album" ],
+          "http://api.stardog.com/artist" : [ {
+            "@id" : "http://api.stardog.com/Paul_McCartney"
+          } ],
+          "http://api.stardog.com/date" : [ {
+            "@type" : "http://www.w3.org/2001/XMLSchema#date",
+            "@value" : "1970-04-17"
+          } ],
+          "http://api.stardog.com/name" : [ {
+            "@value" : "McCartney"
+          } ]
+        }, {
+          "@id" : "http://api.stardog.com/Paul_McCartney",
+          "@type" : [ "http://api.stardog.com/SoloArtist" ]
+        }, {
+          "@id" : "http://api.stardog.com/Please_Please_Me",
+          "@type" : [ "http://api.stardog.com/Album" ],
+          "http://api.stardog.com/artist" : [ {
+            "@id" : "http://api.stardog.com/The_Beatles"
+          } ],
+          "http://api.stardog.com/date" : [ {
+            "@type" : "http://www.w3.org/2001/XMLSchema#date",
+            "@value" : "1963-03-22"
+          } ],
+          "http://api.stardog.com/name" : [ {
+            "@value" : "Please Please Me"
+          } ],
+          "http://api.stardog.com/track" : [ {
+            "@id" : "http://api.stardog.com/Love_Me_Do"
+          } ]
+        }, {
+          "@id" : "http://api.stardog.com/Ringo_Starr",
+          "@type" : [ "http://api.stardog.com/SoloArtist" ]
+        }, {
+          "@id" : "http://api.stardog.com/The_Beatles",
+          "@type" : [ "http://api.stardog.com/Band" ],
+          "http://api.stardog.com/member" : [ {
+            "@id" : "http://api.stardog.com/John_Lennon"
+          }, {
+            "@id" : "http://api.stardog.com/Paul_McCartney"
+          }, {
+            "@id" : "http://api.stardog.com/Ringo_Starr"
+          }, {
+            "@id" : "http://api.stardog.com/George_Harrison"
+          } ],
+          "http://api.stardog.com/name" : [ {
+            "@value" : "The Beatles"
+          } ]
+        } ]
+    http_version: 
+  recorded_at: Fri, 11 Jan 2019 22:05:12 GMT
+recorded_with: VCR 4.0.0

@@ -43,9 +43,10 @@ module StardogRb
       def execute(conn, database, query, params = {})
         type = Query.query_type(query)
         resource = type == 'update' ? 'update' : 'query'
+        content_type = params.delete('accept') || Query.content_type(query)
         request = conn.post_request(query, params, database, resource)
         request.content_type = 'application/sparql-query'
-        conn.response(request, Query.content_type(query))
+        conn.response(request, content_type)
       end
     end
   end

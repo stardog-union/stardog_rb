@@ -29,6 +29,15 @@ class QueryTest < Minitest::Test
     assert json_response['results']['bindings'].length == 5
   end
 
+  def test_specify_content_accept
+    query = 'construct where { ?s ?p ?o }'
+    response = StardogRb::Query.execute(
+      @conn, 'test_db', query, 'accept' => 'application/ld+json'
+    )
+    assert response.code == '200'
+    assert response.content_type == 'application/ld+json'
+  end
+
   def test_ask_query_true
     query = 'ask { graph <movie:starwars> {:luke a :Human }}'
     response = StardogRb::Query.execute(@conn, 'test_db', query)
