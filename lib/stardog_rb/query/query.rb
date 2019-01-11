@@ -27,7 +27,7 @@ module StardogRb
         return 'paths' if q.start_with?('paths')
       end
 
-      def mime_type(query)
+      def content_type(query)
         case query_type(query)
         when 'select', 'paths'
           'application/sparql-results+json'
@@ -45,7 +45,7 @@ module StardogRb
         resource = type == 'update' ? 'update' : 'query'
         request = conn.post_request(query, params, database, resource)
         request.content_type = 'application/sparql-query'
-        conn.response(request, Query.mime_type(query))
+        conn.response(request, Query.content_type(query))
       end
     end
   end
