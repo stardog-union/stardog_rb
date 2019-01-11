@@ -69,4 +69,14 @@ class QueryTest < Minitest::Test
     assert response.code == '200'
     assert response.content_type == 'text/turtle'
   end
+
+  def test_insert_query
+    query = 'insert data { :foo :bar :baz }'
+    response = StardogRb::Query.execute(@conn, 'test_db', query)
+    assert response.code == '200'
+    select_q = 'select * { :foo ?p ?o }'
+    response = StardogRb::Query.execute(@conn, 'test_db', select_q)
+    json_response = JSON.parse(response.body)
+    assert json_response['results']['bindings'].length == 1
+  end
 end

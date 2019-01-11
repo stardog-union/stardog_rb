@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:5820/test_db/update
+    body:
+      encoding: UTF-8
+      string: insert data { :foo :bar :baz }
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - text/boolean
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:5820
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+      Content-Type:
+      - application/sparql-update
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      Date:
+      - Fri, 11 Jan 2019 22:46:33 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 11 Jan 2019 22:46:33 GMT
+- request:
+    method: post
+    uri: http://localhost:5820/test_db/query
+    body:
+      encoding: UTF-8
+      string: select * { :foo ?p ?o }
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/sparql-results+json
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:5820
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+      Content-Type:
+      - application/sparql-query
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Sd-Query-Id:
+      - '77'
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/sparql-results+json
+      Date:
+      - Fri, 11 Jan 2019 22:46:33 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"head":{"vars":["p","o"]},"results":{"bindings":[{"p":{"type":"uri","value":"http://api.stardog.com/bar"},"o":{"type":"uri","value":"http://api.stardog.com/baz"}}]}}'
+    http_version: 
+  recorded_at: Fri, 11 Jan 2019 22:46:33 GMT
+recorded_with: VCR 4.0.0
