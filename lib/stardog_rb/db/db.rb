@@ -8,14 +8,23 @@ module StardogRb
           conn.response(request, 'application/json')
         end
 
-        def create(conn, database, options = {})
+        def form_filenames(files)
+          files.collect do |(file, context)|
+            { 'filename' => File.basename(file), 'context' => context }
+          end
+        end
+
+        def create(conn, database, options = {}, *files)
           form_data = {
-            'root' => {
-              'dbname' => database,
-              'options' => options
-            }
+            'dbname' => database,
+            'options' => options,
+            'files' => form_filenames(files)
           }
-          request = conn.post_multipart_request(form_data, 'admin', 'databases')
+
+          files = files.collect { |(f, _c)| f }
+          request = conn.post_request_multipart(
+            form_data.to_json, {}, files, 'admin', 'databases'
+          )
           conn.response(request, 'application/json')
         end
 

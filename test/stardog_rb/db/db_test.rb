@@ -12,6 +12,10 @@ class DbTest < Minitest::Test
     VCR.eject_cassette
   end
 
+  def fixture_file(file_name)
+    File.new(File.expand_path("../../fixtures/#{file_name}", __dir__))
+  end
+
   def test_db_list
     response = StardogRb::Db::Db.list(@conn)
     response_json = JSON.parse(response.body)
@@ -37,6 +41,18 @@ class DbTest < Minitest::Test
     assert response.code == '201'
     assert response.content_type == 'application/json'
     assert message.start_with?('Successfully created database')
+  end
+
+  def test_db_create_with_files
+    response = StardogRb::Db::Db.create(
+      @conn, 'beatles',
+      { 'reasoning.type' => 'RDFS' },
+      [fixture_file('beatles.ttl'), ''],
+      [fixture_file('starwars.ttl.gz'), 'movie:starwars']
+    )
+    assert response.code == '201'
+    assert response.content_type == 'application/json'
+    assert JSON.parse(response.body)['message'] =~ /Successfully/
   end
 
   def test_db_drop

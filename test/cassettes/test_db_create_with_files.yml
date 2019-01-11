@@ -1,0 +1,98 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:5820/admin/databases
+    body:
+      encoding: UTF-8
+      base64_string: |
+        LS0tLS0tTXVsdGlwYXJ0Qm91bmRhcnkNCkNvbnRlbnQtRGlzcG9zaXRpb246
+        IGZvcm0tZGF0YTsgbmFtZT0icm9vdCINCg0KeyJkYm5hbWUiOiJiZWF0bGVz
+        Iiwib3B0aW9ucyI6eyJyZWFzb25pbmcudHlwZSI6IlJERlMifSwiZmlsZXMi
+        Olt7ImZpbGVuYW1lIjoiYmVhdGxlcy50dGwiLCJjb250ZXh0IjoiIn0seyJm
+        aWxlbmFtZSI6InN0YXJ3YXJzLnR0bC5neiIsImNvbnRleHQiOiJtb3ZpZTpz
+        dGFyd2FycyJ9XX0NCi0tLS0tLU11bHRpcGFydEJvdW5kYXJ5DQpDb250ZW50
+        LURpc3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9ImJlYXRsZXMudHRsIjsg
+        ZmlsZW5hbWU9ImJlYXRsZXMudHRsIg0KQ29udGVudC1UeXBlOiB0ZXh0L3R1
+        cnRsZQ0KDQpQUkVGSVggcmRmOiA8aHR0cDovL3d3dy53My5vcmcvMTk5OS8w
+        Mi8yMi1yZGYtc3ludGF4LW5zIz4KUFJFRklYIHhzZDogPGh0dHA6Ly93d3cu
+        dzMub3JnLzIwMDEvWE1MU2NoZW1hIz4KCjpUaGVfQmVhdGxlcyAgICAgIHJk
+        Zjp0eXBlICA6QmFuZCAuCjpUaGVfQmVhdGxlcyAgICAgIDpuYW1lICAgICAi
+        VGhlIEJlYXRsZXMiIC4KOlRoZV9CZWF0bGVzICAgICAgOm1lbWJlciAgIDpK
+        b2huX0xlbm5vbiAuCjpUaGVfQmVhdGxlcyAgICAgIDptZW1iZXIgICA6UGF1
+        bF9NY0NhcnRuZXkgLgo6VGhlX0JlYXRsZXMgICAgICA6bWVtYmVyICAgOlJp
+        bmdvX1N0YXJyIC4KOlRoZV9CZWF0bGVzICAgICAgOm1lbWJlciAgIDpHZW9y
+        Z2VfSGFycmlzb24gLgo6Sm9obl9MZW5ub24gICAgICByZGY6dHlwZSAgOlNv
+        bG9BcnRpc3QgLgo6UGF1bF9NY0NhcnRuZXkgICByZGY6dHlwZSAgOlNvbG9B
+        cnRpc3QgLgo6UmluZ29fU3RhcnIgICAgICByZGY6dHlwZSAgOlNvbG9BcnRp
+        c3QgLgo6R2VvcmdlX0hhcnJpc29uICByZGY6dHlwZSAgOlNvbG9BcnRpc3Qg
+        Lgo6UGxlYXNlX1BsZWFzZV9NZSByZGY6dHlwZSAgOkFsYnVtIC4KOlBsZWFz
+        ZV9QbGVhc2VfTWUgOm5hbWUgICAgICJQbGVhc2UgUGxlYXNlIE1lIiAuCjpQ
+        bGVhc2VfUGxlYXNlX01lIDpkYXRlICAgICAiMTk2My0wMy0yMiJeXnhzZDpk
+        YXRlIC4KOlBsZWFzZV9QbGVhc2VfTWUgOmFydGlzdCAgIDpUaGVfQmVhdGxl
+        cyAuCjpQbGVhc2VfUGxlYXNlX01lIDp0cmFjayAgICA6TG92ZV9NZV9EbyAu
+        CjpMb3ZlX01lX0RvICAgICAgIHJkZjp0eXBlICA6U29uZyAuCjpMb3ZlX01l
+        X0RvICAgICAgIDpuYW1lICAgICAiTG92ZSBNZSBEbyIgLgo6TG92ZV9NZV9E
+        byAgICAgICA6bGVuZ3RoICAgMTI1IC4KOkxvdmVfTWVfRG8gICAgICAgOndy
+        aXRlciAgIDpKb2huX0xlbm5vbiAuCjpMb3ZlX01lX0RvICAgICAgIDp3cml0
+        ZXIgICA6UGF1bF9NY0NhcnRuZXkgLgoKOk1jQ2FydG5leSAgICAgICAgcmRm
+        OnR5cGUgIDpBbGJ1bSAuCjpNY0NhcnRuZXkgICAgICAgIDpuYW1lICAgICAi
+        TWNDYXJ0bmV5IiAuCjpNY0NhcnRuZXkgICAgICAgIDpkYXRlICAgICAiMTk3
+        MC0wNC0xNyJeXnhzZDpkYXRlIC4KOk1jQ2FydG5leSAgICAgICAgOmFydGlz
+        dCAgIDpQYXVsX01jQ2FydG5leSAuCgo6SW1hZ2luZSAgICAgICAgICByZGY6
+        dHlwZSAgOkFsYnVtIC4KOkltYWdpbmUgICAgICAgICAgOm5hbWUgICAgICJJ
+        bWFnaW5lIiAuCjpJbWFnaW5lICAgICAgICAgIDpkYXRlICAgICAiMTk3MS0x
+        MC0xMSJeXnhzZDpkYXRlIC4KOkltYWdpbmUgICAgICAgICAgOmFydGlzdCAg
+        IDpKb2huX0xlbm5vbiAuCg0KLS0tLS0tTXVsdGlwYXJ0Qm91bmRhcnkNCkNv
+        bnRlbnQtRGlzcG9zaXRpb246IGZvcm0tZGF0YTsgbmFtZT0ic3RhcndhcnMu
+        dHRsLmd6IjsgZmlsZW5hbWU9InN0YXJ3YXJzLnR0bC5neiINCkNvbnRlbnQt
+        VHlwZTogDQoNCh+LCAg/xThcAANzdGFyd2Fycy50dGwArZRNj9MwEIbP9FeM
+        eumFRd3uwsGcSruoIESrbbV7HpLJxopjR2OH0n+P7ST9DIJF7aXJeN53Hs/Y
+        EbMcGRNHDAicZlbMFFoL7wYDsahL1D5stqqNfhyA/8U0W/+IsWUG4uARZHM2
+        Mn29TNUFeVVbtZEIb3Q7Ho+7V40lwehbyFwXuy2qgnjULWYsSacWRO71b0Eo
+        khj+Xc5ElTThGdkZ0wmwqgjZftEgvtN2YSoKKQ9lJTk+faVUdrm5KWmlUJMD
+        sUFvIjUF7IH4iWlsXh/47Sn43JfP4SkILqkdciH1NdliI/rBJqdgC7++Nspc
+        UEEzlqNuvr6DcbhB3Y9ydzbckLnkF9R42aMOpp3w1Sc7VX406M0DczuQfur7
+        U+pnqfI6y2ATNZfgzSH5M12s1+3GV2zu0KHi5OISzG7uVsu/duj/p9bmVixL
+        5N3nWidOGg2jFRtnEqNGkbnx7Qc+O/yPk5v55N+Ar8E5tY79ZJO8Ae0MPOpD
+        Ja1JySvfNGjDKfhlCOvD/RZ0Sr/gPmrbiifSw8aGm5ygTVk7lgVZ+IRJcWb1
+        PlpF5F6GR3I1azAZOO8X8s4MPkSD/f32Ju2pDR5ML2HXYln7z+mjLGPQUuIM
+        +1PNBWppm9jOOirb70R03J/5fseZYXo2rFJ76tmpjk2Prs9vpbkDE1gGAAAN
+        Ci0tLS0tLU11bHRpcGFydEJvdW5kYXJ5LS0NCg==
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:5820
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+      Content-Type:
+      - multipart/form-data; boundary=----MultipartBoundary
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Connection:
+      - keep-alive
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 11 Jan 2019 19:13:48 GMT
+    body:
+      encoding: ASCII-8BIT
+      base64_string: |
+        eyJtZXNzYWdlIjoiQnVsayBsb2FkaW5nIGRhdGEgdG8gbmV3IGRhdGFiYXNl
+        IGJlYXRsZXMuXG5Mb2FkZWQgMTE1IHRyaXBsZXMgdG8gYmVhdGxlcyBmcm9t
+        IDIgZmlsZShzKSBpbiAwMDowMDowMC4yNjQgQCAwLjRLIHRyaXBsZXMvc2Vj
+        LlxuU3VjY2Vzc2Z1bGx5IGNyZWF0ZWQgZGF0YWJhc2UgJ2JlYXRsZXMnLlxu
+        In0=
+    http_version: 
+  recorded_at: Fri, 11 Jan 2019 19:13:48 GMT
+recorded_with: VCR 4.0.0
