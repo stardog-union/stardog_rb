@@ -47,7 +47,7 @@ class DbTest < Minitest::Test
     response = StardogRb::Db::Db.create(
       @conn, 'test_db',
       { 'reasoning.type' => 'RDFS' },
-      [fixture_file('beatles.ttl'), 'bands:beatles'],
+      [fixture_file('beatles.ttl'), ''],
       [fixture_file('starwars.ttl.gz'), 'movie:starwars']
     )
     assert response.code == '201'

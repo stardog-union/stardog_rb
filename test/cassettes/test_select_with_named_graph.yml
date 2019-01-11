@@ -5,7 +5,7 @@ http_interactions:
     uri: http://localhost:5820/test_db/query
     body:
       encoding: UTF-8
-      string: select * { ?album a :Album . }
+      string: select * where { graph <movie:starwars> { ?c a :Human } }
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -27,7 +27,7 @@ http_interactions:
       Connection:
       - keep-alive
       Sd-Query-Id:
-      - '57'
+      - '58'
       Transfer-Encoding:
       - chunked
       Content-Type:
@@ -36,7 +36,7 @@ http_interactions:
       - Fri, 11 Jan 2019 21:41:27 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"head":{"vars":["album"]},"results":{"bindings":[{"album":{"type":"uri","value":"http://api.stardog.com/Please_Please_Me"}},{"album":{"type":"uri","value":"http://api.stardog.com/McCartney"}},{"album":{"type":"uri","value":"http://api.stardog.com/Imagine"}}]}}'
+      string: '{"head":{"vars":["c"]},"results":{"bindings":[{"c":{"type":"uri","value":"http://api.stardog.com/luke"}},{"c":{"type":"uri","value":"http://api.stardog.com/han"}},{"c":{"type":"uri","value":"http://api.stardog.com/leia"}},{"c":{"type":"uri","value":"http://api.stardog.com/vader"}},{"c":{"type":"uri","value":"http://api.stardog.com/tarkin"}}]}}'
     http_version: 
   recorded_at: Fri, 11 Jan 2019 21:41:27 GMT
 recorded_with: VCR 4.0.0
