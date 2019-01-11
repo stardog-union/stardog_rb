@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: http://localhost:5820/admin/databases/beatles/online
+    uri: http://localhost:5820/admin/databases/test_db/online
     body:
       encoding: UTF-8
       string: ''
@@ -27,13 +27,13 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '88'
+      - '89'
       Date:
-      - Thu, 10 Jan 2019 14:07:06 GMT
+      - Fri, 11 Jan 2019 21:24:07 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{ "message" : "The database ''beatles'' was successfully brought online"
+      string: '{ "message" : "The database ''test_db'' was successfully brought online"
         }'
     http_version: 
-  recorded_at: Thu, 10 Jan 2019 14:07:06 GMT
+  recorded_at: Fri, 11 Jan 2019 21:24:07 GMT
 recorded_with: VCR 4.0.0

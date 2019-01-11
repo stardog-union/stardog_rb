@@ -5,7 +5,7 @@ http_interactions:
     uri: http://localhost:5820/admin/databases
     body:
       encoding: UTF-8
-      string: "-----------MultipartBoundary\r\nContent-Disposition: form-data; name=\"root\"\r\n\r\n{\"dbname\":\"beatles\",\"options\":{},\"files\":[]}\r\n-----------MultipartBoundary--"
+      string: "------MultipartBoundary\r\nContent-Disposition: form-data; name=\"root\"\r\n\r\n{\"dbname\":\"test_db\",\"options\":{},\"files\":[]}\r\n------MultipartBoundary--\r\n"
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -18,7 +18,7 @@ http_interactions:
       Authorization:
       - Basic YWRtaW46YWRtaW4=
       Content-Type:
-      - multipart/form-data; boundary=---------MultipartBoundary
+      - multipart/form-data; boundary=----MultipartBoundary
   response:
     status:
       code: 201
@@ -31,10 +31,10 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 11 Jan 2019 16:26:15 GMT
+      - Fri, 11 Jan 2019 21:22:07 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"message":"Successfully created database ''beatles''.\n"}'
+      string: '{"message":"Successfully created database ''test_db''.\n"}'
     http_version: 
-  recorded_at: Fri, 11 Jan 2019 16:26:15 GMT
+  recorded_at: Fri, 11 Jan 2019 21:22:07 GMT
 recorded_with: VCR 4.0.0

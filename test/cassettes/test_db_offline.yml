@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: http://localhost:5820/admin/databases/beatles/offline
+    uri: http://localhost:5820/admin/databases/test_db/offline
     body:
       encoding: UTF-8
       string: ''
@@ -27,13 +27,13 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '84'
+      - '85'
       Date:
-      - Thu, 10 Jan 2019 14:08:12 GMT
+      - Fri, 11 Jan 2019 21:20:08 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{ "message" : "The database beatles was successfully set offline."
+      string: '{ "message" : "The database test_db was successfully set offline."
         }'
     http_version: 
-  recorded_at: Thu, 10 Jan 2019 14:08:12 GMT
+  recorded_at: Fri, 11 Jan 2019 21:20:08 GMT
 recorded_with: VCR 4.0.0
