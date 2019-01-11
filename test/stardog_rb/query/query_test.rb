@@ -28,4 +28,20 @@ class QueryTest < Minitest::Test
     assert response.content_type == 'application/sparql-results+json'
     assert json_response['results']['bindings'].length == 5
   end
+
+  def test_ask_query_true
+    query = 'ask { graph <movie:starwars> {:luke a :Human }}'
+    response = StardogRb::Query.execute(@conn, 'test_db', query)
+    assert response.code == '200'
+    assert response.content_type == 'text/boolean'
+    assert response.body == 'true'
+  end
+
+  def test_ask_query_false
+    query = 'ask { graph <movie:starwars> {:luke a :Droid }}'
+    response = StardogRb::Query.execute(@conn, 'test_db', query)
+    assert response.code == '200'
+    assert response.content_type == 'text/boolean'
+    assert response.body == 'false'
+  end
 end

@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:5820/test_db/query
+    body:
+      encoding: UTF-8
+      string: ask { graph <movie:starwars> {:luke a :Human }}
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - text/boolean
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:5820
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+      Content-Type:
+      - application/sparql-query
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Sd-Query-Id:
+      - '63'
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - text/boolean
+      Date:
+      - Fri, 11 Jan 2019 21:51:18 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: 'true'
+    http_version: 
+  recorded_at: Fri, 11 Jan 2019 21:51:18 GMT
+recorded_with: VCR 4.0.0
