@@ -53,4 +53,11 @@ class QueryTest < Minitest::Test
     assert response.content_type == 'text/boolean'
     assert response.body == 'false'
   end
+
+  def test_construct_query
+    query = 'construct where { ?s ?p ?o }'
+    response = StardogRb::Query.execute(@conn, 'test_db', query)
+    assert response.code == '200'
+    assert response.content_type == 'text/turtle'
+  end
 end
