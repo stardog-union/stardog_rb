@@ -3,6 +3,8 @@ require 'test_helper'
 require 'stardog_rb'
 
 class DbTest < Minitest::Test
+  Transaction = Stardog::Db::Transaction
+
   def setup
     @conn = Stardog::Connection.new
     VCR.insert_cassette name
@@ -62,6 +64,21 @@ class DbTest < Minitest::Test
     assert response.code == '200'
     assert response.content_type == 'application/json'
     assert message.end_with?('was successfully dropped.')
+  end
+
+  def test_db_clear
+    assert Stardog::Db.size(@conn, 'test_db').body == '1'
+    Transaction.with_transaction(@conn, 'test_db') do |transaction_id|
+      Stardog::Db.clear(@conn, 'test_db', transaction_id)
+    end
+    assert Stardog::Db.size(@conn, 'test_db').body == '0'
+  end
+
+  def test_db_size
+    response = Stardog::Db.size(@conn, 'test_db')
+    puts response.body
+    assert response.code == '200'
+    assert response.body == '1'
   end
 
   def test_db_online

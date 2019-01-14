@@ -32,6 +32,13 @@ module Stardog
         conn.response(request)
       end
 
+      def clear(conn, database, transaction_id, params = {})
+        request = conn.post_request(
+          {}, params, database, transaction_id, 'clear'
+        )
+        conn.response(request)
+      end
+
       def online(conn, database)
         path = ['admin', 'databases', database, 'online']
         request = conn.put_request({}, {}, *path)
@@ -56,6 +63,11 @@ module Stardog
         request = conn.put_request(options.to_json, {}, *path)
         request.content_type = 'application/json'
         conn.response(request, 'application/json')
+      end
+
+      def size(conn, database)
+        request = conn.get_request(database, 'size')
+        conn.response(request, 'text/plain')
       end
     end
   end
