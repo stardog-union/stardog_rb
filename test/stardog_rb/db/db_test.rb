@@ -3,6 +3,7 @@ require 'test_helper'
 require 'stardog_rb'
 
 class DbTest < Minitest::Test
+  Db = Stardog::Db
   Transaction = Stardog::Db::Transaction
 
   def setup
@@ -19,7 +20,7 @@ class DbTest < Minitest::Test
   end
 
   def test_db_list
-    response = Stardog::Db.list(@conn)
+    response = Db.list(@conn)
     response_json = JSON.parse(response.body)
     assert response.code == '200'
     assert response.content_type == 'application/json'
@@ -27,7 +28,7 @@ class DbTest < Minitest::Test
   end
 
   def test_db_create
-    response = Stardog::Db.create(@conn, 'test_db')
+    response = Db.create(@conn, 'test_db')
     response_json = JSON.parse(response.body)
     message = response_json['message']
     assert response.code == '201'
@@ -37,7 +38,7 @@ class DbTest < Minitest::Test
 
   def test_db_create_with_options
     options = { 'reasoning.type' => 'DL' }
-    response = Stardog::Db.create(@conn, 'test_db', options)
+    response = Db.create(@conn, 'test_db', options)
     response_json = JSON.parse(response.body)
     message = response_json['message']
     assert response.code == '201'
@@ -46,7 +47,7 @@ class DbTest < Minitest::Test
   end
 
   def test_db_create_with_files
-    response = Stardog::Db.create(
+    response = Db.create(
       @conn, 'test_db',
       { 'reasoning.type' => 'RDFS' },
       [fixture_file('beatles.ttl'), ''],
@@ -58,7 +59,7 @@ class DbTest < Minitest::Test
   end
 
   def test_db_drop
-    response = Stardog::Db.drop(@conn, 'test_db')
+    response = Db.drop(@conn, 'test_db')
     response_json = JSON.parse(response.body)
     message = response_json['message']
     assert response.code == '200'
@@ -67,22 +68,22 @@ class DbTest < Minitest::Test
   end
 
   def test_db_clear
-    assert Stardog::Db.size(@conn, 'test_db').body == '1'
+    assert Db.size(@conn, 'test_db').body == '1'
     Transaction.with_transaction(@conn, 'test_db') do |transaction_id|
-      Stardog::Db.clear(@conn, 'test_db', transaction_id)
+      Db.clear(@conn, 'test_db', transaction_id)
     end
-    assert Stardog::Db.size(@conn, 'test_db').body == '0'
+    assert Db.size(@conn, 'test_db').body == '0'
   end
 
   def test_db_size
-    response = Stardog::Db.size(@conn, 'test_db')
+    response = Db.size(@conn, 'test_db')
     puts response.body
     assert response.code == '200'
     assert response.body == '1'
   end
 
   def test_db_online
-    response = Stardog::Db.online(@conn, 'test_db')
+    response = Db.online(@conn, 'test_db')
     response_json = JSON.parse(response.body)
     message = response_json['message']
     assert response.code == '200'
@@ -91,7 +92,7 @@ class DbTest < Minitest::Test
   end
 
   def test_db_offline
-    response = Stardog::Db.offline(@conn, 'test_db')
+    response = Db.offline(@conn, 'test_db')
     response_json = JSON.parse(response.body)
     message = response_json['message']
     assert response.code == '200'
@@ -104,7 +105,7 @@ class DbTest < Minitest::Test
       'search.enabled' => true,
       'reasoning.type' => 'DL'
     }
-    response = Stardog::Db.set_options(@conn, 'test_db', options)
+    response = Db.set_options(@conn, 'test_db', options)
     assert response.code == '200'
     assert response.body =~ /option.*were successfully set/
   end
@@ -114,7 +115,7 @@ class DbTest < Minitest::Test
       'search.enabled' => nil,
       'reasoning.type' => nil
     }
-    response = Stardog::Db.get_options(@conn, 'test_db', options)
+    response = Db.get_options(@conn, 'test_db', options)
     response_json = JSON.parse(response.body)
     assert response.code == '200'
     assert response_json.key? 'search.enabled'
