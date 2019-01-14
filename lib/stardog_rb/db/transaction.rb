@@ -22,16 +22,10 @@ module Stardog
           conn.response(request, '*/*')
         end
 
-        def add
-          nil
-        end
-
-        def remove
-          nil
-        end
-
-        def clear
-          nil
+        def with_transaction(conn, database)
+          transaction_id = self.begin(conn, database).body
+          yield transaction_id
+          commit(conn, database, transaction_id)
         end
       end
     end
