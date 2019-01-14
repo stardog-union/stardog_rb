@@ -1,63 +1,61 @@
 module StardogRb
+  # Control databases on the Stardog server
   module Db
-    # Control databases on the Stardog server
-    class Db
-      class << self
-        def list(conn)
-          request = conn.get_request('admin', 'databases')
-          conn.response(request, 'application/json')
-        end
+    class << self
+      def list(conn)
+        request = conn.get_request('admin', 'databases')
+        conn.response(request, 'application/json')
+      end
 
-        def form_filenames(files)
-          files.collect do |(file, context)|
-            { 'filename' => File.basename(file), 'context' => context }
-          end
+      def form_filenames(files)
+        files.collect do |(file, context)|
+          { 'filename' => File.basename(file), 'context' => context }
         end
+      end
 
-        def create(conn, database, options = {}, *files)
-          form_data = {
-            'dbname' => database,
-            'options' => options,
-            'files' => form_filenames(files)
-          }
+      def create(conn, database, options = {}, *files)
+        form_data = {
+          'dbname' => database,
+          'options' => options,
+          'files' => form_filenames(files)
+        }
 
-          files = files.collect { |(f, _c)| f }
-          request = conn.post_request_multipart(
-            form_data.to_json, {}, files, 'admin', 'databases'
-          )
-          conn.response(request, 'application/json')
-        end
+        files = files.collect { |(f, _c)| f }
+        request = conn.post_request_multipart(
+          form_data.to_json, {}, files, 'admin', 'databases'
+        )
+        conn.response(request, 'application/json')
+      end
 
-        def drop(conn, database)
-          request = conn.delete_request('admin', 'databases', database)
-          conn.response(request)
-        end
+      def drop(conn, database)
+        request = conn.delete_request('admin', 'databases', database)
+        conn.response(request)
+      end
 
-        def online(conn, database)
-          path = ['admin', 'databases', database, 'online']
-          request = conn.put_request({}, {}, *path)
-          conn.response(request)
-        end
+      def online(conn, database)
+        path = ['admin', 'databases', database, 'online']
+        request = conn.put_request({}, {}, *path)
+        conn.response(request)
+      end
 
-        def offline(conn, database)
-          path = ['admin', 'databases', database, 'offline']
-          request = conn.put_request({}, {}, *path)
-          conn.response(request)
-        end
+      def offline(conn, database)
+        path = ['admin', 'databases', database, 'offline']
+        request = conn.put_request({}, {}, *path)
+        conn.response(request)
+      end
 
-        def set_options(conn, database, options)
-          path = ['admin', 'databases', database, 'options']
-          request = conn.post_request(options.to_json, {}, *path)
-          request.content_type = 'application/json'
-          conn.response(request, 'application/json')
-        end
+      def set_options(conn, database, options)
+        path = ['admin', 'databases', database, 'options']
+        request = conn.post_request(options.to_json, {}, *path)
+        request.content_type = 'application/json'
+        conn.response(request, 'application/json')
+      end
 
-        def get_options(conn, database, options)
-          path = ['admin', 'databases', database, 'options']
-          request = conn.put_request(options.to_json, {}, *path)
-          request.content_type = 'application/json'
-          conn.response(request, 'application/json')
-        end
+      def get_options(conn, database, options)
+        path = ['admin', 'databases', database, 'options']
+        request = conn.put_request(options.to_json, {}, *path)
+        request.content_type = 'application/json'
+        conn.response(request, 'application/json')
       end
     end
   end
