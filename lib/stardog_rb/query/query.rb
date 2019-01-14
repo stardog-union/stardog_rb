@@ -1,6 +1,6 @@
 module StardogRb
   # Query Stardog databases
-  class Query
+  module Query
     class << self
       def remove_sparql_prologue(query)
         prefix_reg = /prefix[^:]+:\s*<[^>]*>\s*/i

@@ -3,7 +3,7 @@ require 'stardog_rb/connection'
 
 module StardogRb
   # Control the Stardog server
-  class Server
+  module Server
     class << self
       def status(conn)
         request = conn.get_request('admin', 'status')
