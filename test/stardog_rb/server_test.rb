@@ -4,7 +4,7 @@ require 'stardog_rb'
 
 class ServerTest < Minitest::Test
   def setup
-    @conn = StardogRb::Connection.new
+    @conn = Stardog::Connection.new
     VCR.insert_cassette name
   end
 
@@ -13,7 +13,7 @@ class ServerTest < Minitest::Test
   end
 
   def test_that_it_retrieves_the_server_status
-    response = StardogRb::Server.status(@conn)
+    response = Stardog::Server.status(@conn)
     response_json = JSON.parse(response.body)
     assert response.code == '200'
     assert response.content_type = 'application/json'
@@ -23,7 +23,7 @@ class ServerTest < Minitest::Test
   end
 
   def test_server_shutdown
-    response = StardogRb::Server.shutdown(@conn)
+    response = Stardog::Server.shutdown(@conn)
     assert response.code == '200'
   end
 end

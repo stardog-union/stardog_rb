@@ -4,7 +4,7 @@ require 'stardog_rb/version'
 
 Gem::Specification.new do |spec|
   spec.name = 'stardog_rb'
-  spec.version = StardogRb::VERSION
+  spec.version = Stardog::VERSION
   spec.authors = ['Cullan Springstead']
   spec.email = ['cullan.springstead@stardog.com']
   spec.summary = 'Stardog_rb: Ruby bindings for Stardog'

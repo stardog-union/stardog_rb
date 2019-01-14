@@ -1,3 +1,3 @@
-module StardogRb
+module Stardog
   VERSION = '0.0.1'.freeze
 end

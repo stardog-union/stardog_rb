@@ -1,4 +1,4 @@
-module StardogRb
+module Stardog
   # Control databases on the Stardog server
   module Db
     class << self

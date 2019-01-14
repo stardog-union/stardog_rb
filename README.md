@@ -29,13 +29,13 @@ Or install it yourself as:
 ``` ruby
 require 'stardog_rb'
 
-conn = StardogRb::Connection.new(
+conn = Stardog::Connection.new(
   endpoint => 'http://localhost:5820',
   username => 'admin',
   password => 'admin'
 )
 
-StardogRb::Server.status(conn)
+Stardog::Server.status(conn)
 ```
 
 ## API

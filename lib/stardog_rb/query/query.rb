@@ -1,4 +1,4 @@
-module StardogRb
+module Stardog
   # Query Stardog databases
   module Query
     class << self

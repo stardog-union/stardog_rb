@@ -1,7 +1,7 @@
 require 'net/http'
 require 'stardog_rb/connection'
 
-module StardogRb
+module Stardog
   # Control the Stardog server
   module Server
     class << self

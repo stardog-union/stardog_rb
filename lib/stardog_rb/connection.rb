@@ -1,6 +1,6 @@
 require 'net/http'
 
-module StardogRb
+module Stardog
   # Hold connection information
   class Connection
     MULTIPART_BOUNDARY = '----MultipartBoundary'.freeze
