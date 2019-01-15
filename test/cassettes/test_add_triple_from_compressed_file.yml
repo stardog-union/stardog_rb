@@ -27,19 +27,19 @@ http_interactions:
       Content-Type:
       - text/plain
       Content-Length:
-      - '55'
+      - '54'
       Date:
-      - Tue, 15 Jan 2019 17:30:31 GMT
+      - Tue, 15 Jan 2019 19:40:47 GMT
     body:
       encoding: ASCII-8BIT
-      base64_string: 'MmY3YmMzNzMtZWFjNC00YWM3LWIyNGQtY2JmNTEzMzVjNDIy
+      base64_string: 'NTk3YjY3MWMtOGNjNi00YTFjLWJhZTMtMGM5OGNmMGU3NmMw
 
 '
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 17:30:31 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:47 GMT
 - request:
     method: post
-    uri: http://localhost:5820/test_db/2f7bc373-eac4-4ac7-b24d-cbf51335c422/add
+    uri: http://localhost:5820/test_db/597b671c-8cc6-4a1c-bae3-0c98cf0e76c0/add
     body:
       encoding: UTF-8
       base64_string: |
@@ -72,15 +72,15 @@ http_interactions:
       Content-Length:
       - '0'
       Date:
-      - Tue, 15 Jan 2019 17:30:31 GMT
+      - Tue, 15 Jan 2019 19:40:47 GMT
     body:
       encoding: UTF-8
       base64_string: ''
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 17:30:31 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:47 GMT
 - request:
     method: post
-    uri: http://localhost:5820/test_db/transaction/commit/2f7bc373-eac4-4ac7-b24d-cbf51335c422
+    uri: http://localhost:5820/test_db/transaction/commit/597b671c-8cc6-4a1c-bae3-0c98cf0e76c0
     body:
       encoding: UTF-8
       base64_string: ''
@@ -107,14 +107,14 @@ http_interactions:
       Content-Length:
       - '46'
       Date:
-      - Tue, 15 Jan 2019 17:30:31 GMT
+      - Tue, 15 Jan 2019 19:40:47 GMT
     body:
       encoding: ASCII-8BIT
       base64_string: 'ewogICJhZGRlZCI6IDEsCiAgInJlbW92ZWQiOiAwCn0=
 
 '
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 17:30:31 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:47 GMT
 - request:
     method: post
     uri: http://localhost:5820/test_db/query
@@ -147,18 +147,18 @@ http_interactions:
       Connection:
       - keep-alive
       Sd-Query-Id:
-      - '114'
+      - '69'
       Transfer-Encoding:
       - chunked
       Content-Type:
       - text/boolean
       Date:
-      - Tue, 15 Jan 2019 17:30:31 GMT
+      - Tue, 15 Jan 2019 19:40:47 GMT
     body:
       encoding: ASCII-8BIT
       base64_string: 'dHJ1ZQ==
 
 '
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 17:30:31 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:47 GMT
 recorded_with: VCR 4.0.0

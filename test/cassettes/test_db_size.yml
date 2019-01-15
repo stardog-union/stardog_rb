@@ -1,6 +1,64 @@
 ---
 http_interactions:
 - request:
+    method: post
+    uri: http://localhost:5820/admin/databases
+    body:
+      encoding: UTF-8
+      string: "------MultipartBoundary\r\nContent-Disposition: form-data; name=\"root\"\r\n\r\n{\"dbname\":\"test_db\",\"options\":{},\"files\":[{\"filename\":\"beatles.ttl\",\"context\":\"\"}]}\r\n------MultipartBoundary\r\nContent-Disposition:
+        form-data; name=\"beatles.ttl\"; filename=\"beatles.ttl\"\r\nContent-Type:
+        text/turtle\r\n\r\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX
+        xsd: <http://www.w3.org/2001/XMLSchema#>\n\n:The_Beatles      rdf:type  :Band
+        .\n:The_Beatles      :name     \"The Beatles\" .\n:The_Beatles      :member
+        \  :John_Lennon .\n:The_Beatles      :member   :Paul_McCartney .\n:The_Beatles
+        \     :member   :Ringo_Starr .\n:The_Beatles      :member   :George_Harrison
+        .\n:John_Lennon      rdf:type  :SoloArtist .\n:Paul_McCartney   rdf:type  :SoloArtist
+        .\n:Ringo_Starr      rdf:type  :SoloArtist .\n:George_Harrison  rdf:type  :SoloArtist
+        .\n:Please_Please_Me rdf:type  :Album .\n:Please_Please_Me :name     \"Please
+        Please Me\" .\n:Please_Please_Me :date     \"1963-03-22\"^^xsd:date .\n:Please_Please_Me
+        :artist   :The_Beatles .\n:Please_Please_Me :track    :Love_Me_Do .\n:Love_Me_Do
+        \      rdf:type  :Song .\n:Love_Me_Do       :name     \"Love Me Do\" .\n:Love_Me_Do
+        \      :length   125 .\n:Love_Me_Do       :writer   :John_Lennon .\n:Love_Me_Do
+        \      :writer   :Paul_McCartney .\n\n:McCartney        rdf:type  :Album .\n:McCartney
+        \       :name     \"McCartney\" .\n:McCartney        :date     \"1970-04-17\"^^xsd:date
+        .\n:McCartney        :artist   :Paul_McCartney .\n\n:Imagine          rdf:type
+        \ :Album .\n:Imagine          :name     \"Imagine\" .\n:Imagine          :date
+        \    \"1971-10-11\"^^xsd:date .\n:Imagine          :artist   :John_Lennon
+        .\n\r\n------MultipartBoundary--\r\n"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:5820
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+      Content-Type:
+      - multipart/form-data; boundary=----MultipartBoundary
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Connection:
+      - keep-alive
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 15 Jan 2019 19:40:41 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"message":"Bulk loading data to new database test_db.\nLoaded 28 triples
+        to test_db from 1 file(s) in 00:00:00.127 @ 0.2K triples/sec.\nSuccessfully
+        created database ''test_db''.\n"}'
+    http_version: 
+  recorded_at: Tue, 15 Jan 2019 19:40:41 GMT
+- request:
     method: get
     uri: http://localhost:5820/test_db/size
     body:
@@ -27,12 +85,12 @@ http_interactions:
       Content-Type:
       - text/plain
       Content-Length:
-      - '21'
+      - '22'
       Date:
-      - Mon, 14 Jan 2019 21:51:18 GMT
+      - Tue, 15 Jan 2019 19:40:41 GMT
     body:
       encoding: ASCII-8BIT
-      string: '1'
+      string: '28'
     http_version: 
-  recorded_at: Mon, 14 Jan 2019 21:51:18 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:41 GMT
 recorded_with: VCR 4.0.0

@@ -29,15 +29,15 @@ http_interactions:
       Content-Length:
       - '56'
       Date:
-      - Tue, 15 Jan 2019 17:39:46 GMT
+      - Tue, 15 Jan 2019 19:40:44 GMT
     body:
       encoding: ASCII-8BIT
-      string: 9d0e6d08-64a0-4696-b913-1b69724c2906
+      string: e266b3bc-a509-4d29-9d96-ebd6e70be720
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 17:39:46 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:44 GMT
 - request:
     method: post
-    uri: http://localhost:5820/test_db/9d0e6d08-64a0-4696-b913-1b69724c2906/add
+    uri: http://localhost:5820/test_db/e266b3bc-a509-4d29-9d96-ebd6e70be720/add
     body:
       encoding: UTF-8
       string: '<http://localhost/publications/articles/Journal1/1940/Article2> <http://purl.org/dc/elements/1.1/subject>
@@ -67,15 +67,15 @@ http_interactions:
       Content-Length:
       - '0'
       Date:
-      - Tue, 15 Jan 2019 17:39:46 GMT
+      - Tue, 15 Jan 2019 19:40:44 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 17:39:46 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:44 GMT
 - request:
     method: post
-    uri: http://localhost:5820/test_db/transaction/commit/9d0e6d08-64a0-4696-b913-1b69724c2906
+    uri: http://localhost:5820/test_db/transaction/commit/e266b3bc-a509-4d29-9d96-ebd6e70be720
     body:
       encoding: UTF-8
       string: ''
@@ -102,7 +102,7 @@ http_interactions:
       Content-Length:
       - '46'
       Date:
-      - Tue, 15 Jan 2019 17:39:46 GMT
+      - Tue, 15 Jan 2019 19:40:44 GMT
     body:
       encoding: ASCII-8BIT
       string: |-
@@ -111,7 +111,7 @@ http_interactions:
           "removed": 0
         }
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 17:39:46 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:44 GMT
 - request:
     method: post
     uri: http://localhost:5820/test_db/transaction/begin
@@ -139,17 +139,17 @@ http_interactions:
       Content-Type:
       - text/plain
       Content-Length:
-      - '54'
+      - '56'
       Date:
-      - Tue, 15 Jan 2019 17:39:46 GMT
+      - Tue, 15 Jan 2019 19:40:44 GMT
     body:
       encoding: ASCII-8BIT
-      string: 7df5a049-0d49-4419-8a59-236f7d3daa80
+      string: e37e91cf-a3ae-4362-a1d5-4fcf51931472
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 17:39:46 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:44 GMT
 - request:
     method: post
-    uri: http://localhost:5820/test_db/7df5a049-0d49-4419-8a59-236f7d3daa80/remove
+    uri: http://localhost:5820/test_db/e37e91cf-a3ae-4362-a1d5-4fcf51931472/remove
     body:
       encoding: UTF-8
       string: '<http://localhost/publications/articles/Journal1/1940/Article2> <http://purl.org/dc/elements/1.1/subject>
@@ -179,15 +179,15 @@ http_interactions:
       Content-Length:
       - '0'
       Date:
-      - Tue, 15 Jan 2019 17:39:46 GMT
+      - Tue, 15 Jan 2019 19:40:44 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 17:39:46 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:44 GMT
 - request:
     method: post
-    uri: http://localhost:5820/test_db/transaction/commit/7df5a049-0d49-4419-8a59-236f7d3daa80
+    uri: http://localhost:5820/test_db/transaction/commit/e37e91cf-a3ae-4362-a1d5-4fcf51931472
     body:
       encoding: UTF-8
       string: ''
@@ -214,7 +214,7 @@ http_interactions:
       Content-Length:
       - '46'
       Date:
-      - Tue, 15 Jan 2019 17:39:46 GMT
+      - Tue, 15 Jan 2019 19:40:44 GMT
     body:
       encoding: ASCII-8BIT
       string: |-
@@ -223,7 +223,7 @@ http_interactions:
           "removed": 1
         }
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 17:39:46 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:44 GMT
 - request:
     method: post
     uri: http://localhost:5820/test_db/query
@@ -253,16 +253,16 @@ http_interactions:
       Connection:
       - keep-alive
       Sd-Query-Id:
-      - '115'
+      - '58'
       Transfer-Encoding:
       - chunked
       Content-Type:
       - text/boolean
       Date:
-      - Tue, 15 Jan 2019 17:39:46 GMT
+      - Tue, 15 Jan 2019 19:40:44 GMT
     body:
       encoding: ASCII-8BIT
       string: 'false'
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 17:39:46 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:44 GMT
 recorded_with: VCR 4.0.0

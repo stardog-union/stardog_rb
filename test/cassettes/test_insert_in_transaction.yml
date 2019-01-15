@@ -29,15 +29,15 @@ http_interactions:
       Content-Length:
       - '56'
       Date:
-      - Tue, 15 Jan 2019 18:12:05 GMT
+      - Tue, 15 Jan 2019 19:40:50 GMT
     body:
       encoding: ASCII-8BIT
-      string: 77befb27-1a40-4f3c-8d20-c4222dde0f64
+      string: 8174db9b-ed86-433d-ac0b-fc7461c8495c
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 18:12:05 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:50 GMT
 - request:
     method: post
-    uri: http://localhost:5820/test_db/77befb27-1a40-4f3c-8d20-c4222dde0f64/update
+    uri: http://localhost:5820/test_db/8174db9b-ed86-433d-ac0b-fc7461c8495c/update
     body:
       encoding: UTF-8
       string: insert data { :Rubber_Soul rdf:type :Album }
@@ -64,15 +64,15 @@ http_interactions:
       Content-Length:
       - '0'
       Date:
-      - Tue, 15 Jan 2019 18:12:05 GMT
+      - Tue, 15 Jan 2019 19:40:50 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 18:12:05 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:50 GMT
 - request:
     method: post
-    uri: http://localhost:5820/test_db/77befb27-1a40-4f3c-8d20-c4222dde0f64/query
+    uri: http://localhost:5820/test_db/8174db9b-ed86-433d-ac0b-fc7461c8495c/query
     body:
       encoding: UTF-8
       string: ask where { { :Rubber_Soul rdf:type :Album } }
@@ -97,18 +97,18 @@ http_interactions:
       Connection:
       - keep-alive
       Sd-Query-Id:
-      - '127'
+      - '79'
       Transfer-Encoding:
       - chunked
       Content-Type:
       - text/boolean
       Date:
-      - Tue, 15 Jan 2019 18:12:05 GMT
+      - Tue, 15 Jan 2019 19:40:50 GMT
     body:
       encoding: ASCII-8BIT
       string: 'true'
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 18:12:05 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:50 GMT
 - request:
     method: post
     uri: http://localhost:5820/test_db/query
@@ -136,21 +136,21 @@ http_interactions:
       Connection:
       - keep-alive
       Sd-Query-Id:
-      - '128'
+      - '80'
       Transfer-Encoding:
       - chunked
       Content-Type:
       - text/boolean
       Date:
-      - Tue, 15 Jan 2019 18:12:05 GMT
+      - Tue, 15 Jan 2019 19:40:50 GMT
     body:
       encoding: ASCII-8BIT
       string: 'false'
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 18:12:05 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:50 GMT
 - request:
     method: post
-    uri: http://localhost:5820/test_db/transaction/commit/77befb27-1a40-4f3c-8d20-c4222dde0f64
+    uri: http://localhost:5820/test_db/transaction/commit/8174db9b-ed86-433d-ac0b-fc7461c8495c
     body:
       encoding: UTF-8
       string: ''
@@ -177,7 +177,7 @@ http_interactions:
       Content-Length:
       - '46'
       Date:
-      - Tue, 15 Jan 2019 18:12:05 GMT
+      - Tue, 15 Jan 2019 19:40:50 GMT
     body:
       encoding: ASCII-8BIT
       string: |-
@@ -186,7 +186,7 @@ http_interactions:
           "removed": 0
         }
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 18:12:05 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:50 GMT
 - request:
     method: post
     uri: http://localhost:5820/test_db/query
@@ -214,16 +214,16 @@ http_interactions:
       Connection:
       - keep-alive
       Sd-Query-Id:
-      - '129'
+      - '81'
       Transfer-Encoding:
       - chunked
       Content-Type:
       - text/boolean
       Date:
-      - Tue, 15 Jan 2019 18:12:05 GMT
+      - Tue, 15 Jan 2019 19:40:50 GMT
     body:
       encoding: ASCII-8BIT
       string: 'true'
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 18:12:05 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:50 GMT
 recorded_with: VCR 4.0.0

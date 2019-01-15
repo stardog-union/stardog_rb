@@ -29,17 +29,17 @@ http_interactions:
       Content-Length:
       - '56'
       Date:
-      - Tue, 15 Jan 2019 17:39:46 GMT
+      - Tue, 15 Jan 2019 19:40:50 GMT
     body:
       encoding: ASCII-8BIT
-      base64_string: 'Njg1MGE1NDktYjA0MS00MTkwLTgxMzMtMGI1NjVjZDE2NmQ1
+      base64_string: 'Mjg1YjQ5NjAtMzVkZC00MjkyLTk5ODctNTA1ZGE4YWM1NTYw
 
 '
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 17:39:46 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:50 GMT
 - request:
     method: post
-    uri: http://localhost:5820/test_db/6850a549-b041-4190-8133-0b565cd166d5/add
+    uri: http://localhost:5820/test_db/285b4960-35dd-4292-9987-505da8ac5560/add
     body:
       encoding: UTF-8
       base64_string: |
@@ -72,17 +72,17 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Tue, 15 Jan 2019 17:39:46 GMT
+      - Tue, 15 Jan 2019 19:40:50 GMT
     body:
       encoding: ASCII-8BIT
       base64_string: |
         eyJtZXNzYWdlIjoiRXhwZWN0ZWQgYW4gUkRGIHZhbHVlIGhlcmUsIGZvdW5k
         ICdcdTAwMWYnIFtMMV0ifQ==
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 17:39:46 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:50 GMT
 - request:
     method: post
-    uri: http://localhost:5820/test_db/transaction/commit/6850a549-b041-4190-8133-0b565cd166d5
+    uri: http://localhost:5820/test_db/transaction/commit/285b4960-35dd-4292-9987-505da8ac5560
     body:
       encoding: UTF-8
       base64_string: ''
@@ -111,15 +111,15 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Tue, 15 Jan 2019 17:39:46 GMT
+      - Tue, 15 Jan 2019 19:40:50 GMT
     body:
       encoding: ASCII-8BIT
       base64_string: |
-        eyJtZXNzYWdlIjoiNjg1MGE1NDktYjA0MS00MTkwLTgxMzMtMGI1NjVjZDE2
-        NmQ1IGlzIG5vdCBhIGtub3duIHRyYW5zYWN0aW9uLiIsImNvZGUiOiJVbmtu
+        eyJtZXNzYWdlIjoiMjg1YjQ5NjAtMzVkZC00MjkyLTk5ODctNTA1ZGE4YWM1
+        NTYwIGlzIG5vdCBhIGtub3duIHRyYW5zYWN0aW9uLiIsImNvZGUiOiJVbmtu
         b3duVHgifQ==
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 17:39:46 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:50 GMT
 - request:
     method: post
     uri: http://localhost:5820/test_db/transaction/begin
@@ -149,17 +149,17 @@ http_interactions:
       Content-Length:
       - '56'
       Date:
-      - Tue, 15 Jan 2019 17:39:46 GMT
+      - Tue, 15 Jan 2019 19:40:50 GMT
     body:
       encoding: ASCII-8BIT
-      base64_string: 'NzJkNTZjZDMtMGMxZS00MjJjLThlMGMtNTQ4NjdhOTRjOGZk
+      base64_string: 'OTNlZjgxOWQtMjU0YS00NDcyLWFjNmQtM2JhNjIxNzM2NmI1
 
 '
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 17:39:46 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:50 GMT
 - request:
     method: post
-    uri: http://localhost:5820/test_db/72d56cd3-0c1e-422c-8e0c-54867a94c8fd/remove
+    uri: http://localhost:5820/test_db/93ef819d-254a-4472-ac6d-3ba6217366b5/remove
     body:
       encoding: UTF-8
       base64_string: |
@@ -192,17 +192,17 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Tue, 15 Jan 2019 17:39:46 GMT
+      - Tue, 15 Jan 2019 19:40:50 GMT
     body:
       encoding: ASCII-8BIT
       base64_string: |
         eyJtZXNzYWdlIjoiRXhwZWN0ZWQgYW4gUkRGIHZhbHVlIGhlcmUsIGZvdW5k
         ICdcdTAwMWYnIFtMMV0ifQ==
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 17:39:46 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:50 GMT
 - request:
     method: post
-    uri: http://localhost:5820/test_db/transaction/commit/72d56cd3-0c1e-422c-8e0c-54867a94c8fd
+    uri: http://localhost:5820/test_db/transaction/commit/93ef819d-254a-4472-ac6d-3ba6217366b5
     body:
       encoding: UTF-8
       base64_string: ''
@@ -227,19 +227,19 @@ http_interactions:
       Sd-Error-Code:
       - UnknownTx
       Content-Length:
-      - '108'
+      - '109'
       Content-Type:
       - application/json
       Date:
-      - Tue, 15 Jan 2019 17:39:46 GMT
+      - Tue, 15 Jan 2019 19:40:50 GMT
     body:
       encoding: ASCII-8BIT
       base64_string: |
-        eyJtZXNzYWdlIjoiNzJkNTZjZDMtMGMxZS00MjJjLThlMGMtNTQ4NjdhOTRj
-        OGZkIGlzIG5vdCBhIGtub3duIHRyYW5zYWN0aW9uLiIsImNvZGUiOiJVbmtu
+        eyJtZXNzYWdlIjoiOTNlZjgxOWQtMjU0YS00NDcyLWFjNmQtM2JhNjIxNzM2
+        NmI1IGlzIG5vdCBhIGtub3duIHRyYW5zYWN0aW9uLiIsImNvZGUiOiJVbmtu
         b3duVHgifQ==
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 17:39:46 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:50 GMT
 - request:
     method: post
     uri: http://localhost:5820/test_db/query
@@ -272,18 +272,18 @@ http_interactions:
       Connection:
       - keep-alive
       Sd-Query-Id:
-      - '116'
+      - '77'
       Transfer-Encoding:
       - chunked
       Content-Type:
       - text/boolean
       Date:
-      - Tue, 15 Jan 2019 17:39:46 GMT
+      - Tue, 15 Jan 2019 19:40:50 GMT
     body:
       encoding: ASCII-8BIT
       base64_string: 'ZmFsc2U=
 
 '
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 17:39:46 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:50 GMT
 recorded_with: VCR 4.0.0

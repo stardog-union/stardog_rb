@@ -29,15 +29,15 @@ http_interactions:
       Content-Length:
       - '56'
       Date:
-      - Mon, 14 Jan 2019 22:59:32 GMT
+      - Tue, 15 Jan 2019 19:40:43 GMT
     body:
       encoding: ASCII-8BIT
-      string: f081e3ab-d6c9-404c-91b4-5bc37268d3a1
+      string: fbd1d4b8-8a19-4e60-88f3-bb57e6c6508a
     http_version: 
-  recorded_at: Mon, 14 Jan 2019 22:59:32 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:43 GMT
 - request:
     method: post
-    uri: http://localhost:5820/test_db/f081e3ab-d6c9-404c-91b4-5bc37268d3a1/add?graph-uri=sd:test
+    uri: http://localhost:5820/test_db/fbd1d4b8-8a19-4e60-88f3-bb57e6c6508a/add?graph-uri=sd:test
     body:
       encoding: UTF-8
       string: "\n        <http://localhost/publications/articles/Journal1/1940/Article2>\n
@@ -66,15 +66,15 @@ http_interactions:
       Content-Length:
       - '0'
       Date:
-      - Mon, 14 Jan 2019 22:59:32 GMT
+      - Tue, 15 Jan 2019 19:40:43 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Mon, 14 Jan 2019 22:59:32 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:43 GMT
 - request:
     method: post
-    uri: http://localhost:5820/test_db/transaction/commit/f081e3ab-d6c9-404c-91b4-5bc37268d3a1
+    uri: http://localhost:5820/test_db/transaction/commit/fbd1d4b8-8a19-4e60-88f3-bb57e6c6508a
     body:
       encoding: UTF-8
       string: ''
@@ -101,7 +101,7 @@ http_interactions:
       Content-Length:
       - '46'
       Date:
-      - Mon, 14 Jan 2019 22:59:32 GMT
+      - Tue, 15 Jan 2019 19:40:43 GMT
     body:
       encoding: ASCII-8BIT
       string: |-
@@ -110,7 +110,7 @@ http_interactions:
           "removed": 0
         }
     http_version: 
-  recorded_at: Mon, 14 Jan 2019 22:59:32 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:43 GMT
 - request:
     method: post
     uri: http://localhost:5820/test_db/query
@@ -140,18 +140,18 @@ http_interactions:
       Connection:
       - keep-alive
       Sd-Query-Id:
-      - '107'
+      - '56'
       Transfer-Encoding:
       - chunked
       Content-Type:
       - text/boolean
       Date:
-      - Mon, 14 Jan 2019 22:59:32 GMT
+      - Tue, 15 Jan 2019 19:40:43 GMT
     body:
       encoding: ASCII-8BIT
       string: 'true'
     http_version: 
-  recorded_at: Mon, 14 Jan 2019 22:59:32 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:43 GMT
 - request:
     method: post
     uri: http://localhost:5820/test_db/transaction/begin
@@ -181,15 +181,15 @@ http_interactions:
       Content-Length:
       - '56'
       Date:
-      - Mon, 14 Jan 2019 22:59:32 GMT
+      - Tue, 15 Jan 2019 19:40:43 GMT
     body:
       encoding: ASCII-8BIT
-      string: 53cf9617-b16c-4a86-95bb-1969a553608e
+      string: 76268fac-7d4f-4191-a7bd-aa212f6c4557
     http_version: 
-  recorded_at: Mon, 14 Jan 2019 22:59:32 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:43 GMT
 - request:
     method: post
-    uri: http://localhost:5820/test_db/53cf9617-b16c-4a86-95bb-1969a553608e/remove?graph-uri=sd:test
+    uri: http://localhost:5820/test_db/76268fac-7d4f-4191-a7bd-aa212f6c4557/remove?graph-uri=sd:test
     body:
       encoding: UTF-8
       string: "\n        <http://localhost/publications/articles/Journal1/1940/Article2>\n
@@ -218,15 +218,15 @@ http_interactions:
       Content-Length:
       - '0'
       Date:
-      - Mon, 14 Jan 2019 22:59:32 GMT
+      - Tue, 15 Jan 2019 19:40:43 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Mon, 14 Jan 2019 22:59:32 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:43 GMT
 - request:
     method: post
-    uri: http://localhost:5820/test_db/transaction/commit/53cf9617-b16c-4a86-95bb-1969a553608e
+    uri: http://localhost:5820/test_db/transaction/commit/76268fac-7d4f-4191-a7bd-aa212f6c4557
     body:
       encoding: UTF-8
       string: ''
@@ -253,7 +253,7 @@ http_interactions:
       Content-Length:
       - '46'
       Date:
-      - Mon, 14 Jan 2019 22:59:32 GMT
+      - Tue, 15 Jan 2019 19:40:43 GMT
     body:
       encoding: ASCII-8BIT
       string: |-
@@ -262,7 +262,7 @@ http_interactions:
           "removed": 1
         }
     http_version: 
-  recorded_at: Mon, 14 Jan 2019 22:59:32 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:43 GMT
 - request:
     method: post
     uri: http://localhost:5820/test_db/query
@@ -292,16 +292,16 @@ http_interactions:
       Connection:
       - keep-alive
       Sd-Query-Id:
-      - '108'
+      - '57'
       Transfer-Encoding:
       - chunked
       Content-Type:
       - text/boolean
       Date:
-      - Mon, 14 Jan 2019 22:59:32 GMT
+      - Tue, 15 Jan 2019 19:40:43 GMT
     body:
       encoding: ASCII-8BIT
       string: 'false'
     http_version: 
-  recorded_at: Mon, 14 Jan 2019 22:59:32 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:43 GMT
 recorded_with: VCR 4.0.0

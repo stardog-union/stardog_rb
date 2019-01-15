@@ -6,17 +6,27 @@ class DbTest < Minitest::Test
   Db = Stardog::Db
   Transaction = Stardog::Db::Transaction
 
+  def prepare_db_without_vcr
+    VCR.configure do |c|
+      c.allow_http_connections_when_no_cassette = true
+      Stardog::Db.drop(@conn, 'test_db')
+      c.allow_http_connections_when_no_cassette = false
+    end
+  end
+
   def setup
     @conn = Stardog::Connection.new
-    VCR.insert_cassette name
+    prepare_db_without_vcr
+
+    if name.include?('compressed')
+      VCR.insert_cassette(name, preserve_exact_body_bytes: true)
+    else
+      VCR.insert_cassette name
+    end
   end
 
   def teardown
     VCR.eject_cassette
-  end
-
-  def fixture_file(file_name)
-    File.new(File.expand_path("../../fixtures/#{file_name}", __dir__))
   end
 
   def test_db_list
@@ -46,7 +56,7 @@ class DbTest < Minitest::Test
     assert message.start_with?('Successfully created database')
   end
 
-  def test_db_create_with_files
+  def test_db_create_with_files_including_compressed
     response = Db.create(
       @conn, 'test_db',
       { 'reasoning.type' => 'RDFS' },
@@ -59,6 +69,7 @@ class DbTest < Minitest::Test
   end
 
   def test_db_drop
+    Db.create(@conn, 'test_db')
     response = Db.drop(@conn, 'test_db')
     response_json = JSON.parse(response.body)
     message = response_json['message']
@@ -68,7 +79,11 @@ class DbTest < Minitest::Test
   end
 
   def test_db_clear
-    assert Db.size(@conn, 'test_db').body == '1'
+    Db.create(
+      @conn, 'test_db', {},
+      [fixture_file('beatles.ttl'), '']
+    )
+    assert Db.size(@conn, 'test_db').body == '28'
     Transaction.with_transaction(@conn, 'test_db') do |transaction_id|
       Db.clear(@conn, 'test_db', transaction_id)
     end
@@ -76,13 +91,17 @@ class DbTest < Minitest::Test
   end
 
   def test_db_size
+    Db.create(
+      @conn, 'test_db', {},
+      [fixture_file('beatles.ttl'), '']
+    )
     response = Db.size(@conn, 'test_db')
-    puts response.body
     assert response.code == '200'
-    assert response.body == '1'
+    assert response.body == '28'
   end
 
   def test_db_online
+    Db.create(@conn, 'test_db', 'database.online' => false)
     response = Db.online(@conn, 'test_db')
     response_json = JSON.parse(response.body)
     message = response_json['message']
@@ -92,6 +111,7 @@ class DbTest < Minitest::Test
   end
 
   def test_db_offline
+    Db.create(@conn, 'test_db')
     response = Db.offline(@conn, 'test_db')
     response_json = JSON.parse(response.body)
     message = response_json['message']
@@ -101,6 +121,8 @@ class DbTest < Minitest::Test
   end
 
   def test_db_set_options
+    Db.create(@conn, 'test_db', 'database.online' => false)
+
     options = {
       'search.enabled' => true,
       'reasoning.type' => 'DL'
@@ -111,9 +133,9 @@ class DbTest < Minitest::Test
   end
 
   def test_db_get_options
+    Db.create(@conn, 'test_db')
     options = {
-      'search.enabled' => nil,
-      'reasoning.type' => nil
+      'search.enabled' => nil, 'reasoning.type' => nil
     }
     response = Db.get_options(@conn, 'test_db', options)
     response_json = JSON.parse(response.body)

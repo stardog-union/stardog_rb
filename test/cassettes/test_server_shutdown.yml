@@ -17,8 +17,6 @@ http_interactions:
       - localhost:5820
       Authorization:
       - Basic YWRtaW46YWRtaW4=
-      Content-Type:
-      - application/json
   response:
     status:
       code: 200
@@ -29,10 +27,10 @@ http_interactions:
       Content-Length:
       - '0'
       Date:
-      - Tue, 08 Jan 2019 15:16:19 GMT
+      - Tue, 15 Jan 2019 19:45:23 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 08 Jan 2019 15:16:19 GMT
+  recorded_at: Tue, 15 Jan 2019 19:45:23 GMT
 recorded_with: VCR 4.0.0

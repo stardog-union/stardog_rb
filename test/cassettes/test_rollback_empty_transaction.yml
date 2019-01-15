@@ -29,15 +29,15 @@ http_interactions:
       Content-Length:
       - '56'
       Date:
-      - Mon, 14 Jan 2019 16:47:10 GMT
+      - Tue, 15 Jan 2019 19:40:51 GMT
     body:
       encoding: ASCII-8BIT
-      string: 6cbc4627-b021-4d7c-aafb-743b8e661b24
+      string: b259aebf-1b6a-4bda-8a71-809dfa3bf03e
     http_version: 
-  recorded_at: Mon, 14 Jan 2019 16:47:10 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:51 GMT
 - request:
     method: post
-    uri: http://localhost:5820/test_db/transaction/rollback/6cbc4627-b021-4d7c-aafb-743b8e661b24
+    uri: http://localhost:5820/test_db/transaction/rollback/b259aebf-1b6a-4bda-8a71-809dfa3bf03e
     body:
       encoding: UTF-8
       string: ''
@@ -62,10 +62,10 @@ http_interactions:
       Content-Length:
       - '0'
       Date:
-      - Mon, 14 Jan 2019 16:47:10 GMT
+      - Tue, 15 Jan 2019 19:40:51 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Mon, 14 Jan 2019 16:47:10 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:51 GMT
 recorded_with: VCR 4.0.0

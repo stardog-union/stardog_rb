@@ -29,15 +29,15 @@ http_interactions:
       Content-Length:
       - '56'
       Date:
-      - Tue, 15 Jan 2019 17:53:10 GMT
+      - Tue, 15 Jan 2019 19:40:48 GMT
     body:
       encoding: ASCII-8BIT
-      string: c0bbe962-6f72-438f-9246-3f4078490180
+      string: bf0b3304-f9b7-4a88-88a0-ac2612712fee
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 17:53:10 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:48 GMT
 - request:
     method: post
-    uri: http://localhost:5820/test_db/c0bbe962-6f72-438f-9246-3f4078490180/query
+    uri: http://localhost:5820/test_db/bf0b3304-f9b7-4a88-88a0-ac2612712fee/query
     body:
       encoding: UTF-8
       string: select * { ?album a :Album . }
@@ -62,21 +62,21 @@ http_interactions:
       Connection:
       - keep-alive
       Sd-Query-Id:
-      - '119'
+      - '74'
       Transfer-Encoding:
       - chunked
       Content-Type:
       - application/sparql-results+json
       Date:
-      - Tue, 15 Jan 2019 17:53:10 GMT
+      - Tue, 15 Jan 2019 19:40:48 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"head":{"vars":["album"]},"results":{"bindings":[{"album":{"type":"uri","value":"http://api.stardog.com/Please_Please_Me"}},{"album":{"type":"uri","value":"http://api.stardog.com/McCartney"}},{"album":{"type":"uri","value":"http://api.stardog.com/Imagine"}}]}}'
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 17:53:10 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:48 GMT
 - request:
     method: post
-    uri: http://localhost:5820/test_db/transaction/commit/c0bbe962-6f72-438f-9246-3f4078490180
+    uri: http://localhost:5820/test_db/transaction/commit/bf0b3304-f9b7-4a88-88a0-ac2612712fee
     body:
       encoding: UTF-8
       string: ''
@@ -103,7 +103,7 @@ http_interactions:
       Content-Length:
       - '45'
       Date:
-      - Tue, 15 Jan 2019 17:53:10 GMT
+      - Tue, 15 Jan 2019 19:40:48 GMT
     body:
       encoding: ASCII-8BIT
       string: |-
@@ -112,5 +112,5 @@ http_interactions:
           "removed": 0
         }
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 17:53:10 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:48 GMT
 recorded_with: VCR 4.0.0

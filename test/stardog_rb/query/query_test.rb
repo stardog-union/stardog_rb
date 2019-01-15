@@ -11,8 +11,20 @@ class QueryTest < Minitest::Test
         "Very interesting subject"^^<http://www.w3.org/2001/XMLSchema#string> .
     ).freeze
 
+  def setup_db(conn)
+    without_vcr do
+      Stardog::Db.drop(conn, 'test_db')
+      Stardog::Db.create(
+        conn, 'test_db', {},
+        [fixture_file('beatles.ttl'), ''],
+        [fixture_file('starwars.ttl.gz'), 'movie:starwars']
+      )
+    end
+  end
+
   def setup
     @conn = Stardog::Connection.new
+    setup_db(@conn)
 
     if name.include?('compressed')
       VCR.insert_cassette(name, preserve_exact_body_bytes: true)
@@ -159,9 +171,7 @@ class QueryTest < Minitest::Test
   end
 
   def test_add_triple_from_file
-    file = File.new(
-      File.expand_path('../../fixtures/simple_test.ttl', __dir__)
-    )
+    file = fixture_file('simple_test.ttl')
 
     Transaction.with_transaction(@conn, 'test_db') do |transaction_id|
       Query.add(@conn, 'test_db', transaction_id, file.read)
@@ -171,9 +181,7 @@ class QueryTest < Minitest::Test
   end
 
   def test_add_triple_from_compressed_file
-    file = File.new(
-      File.expand_path('../../fixtures/simple_test.ttl.gz', __dir__)
-    )
+    file = fixture_file('simple_test.ttl.gz')
 
     Transaction.with_transaction(@conn, 'test_db') do |transaction_id|
       Query.add(
@@ -186,9 +194,7 @@ class QueryTest < Minitest::Test
   end
 
   def test_remove_triple_from_file
-    file_contents = File.new(
-      File.expand_path('../../fixtures/simple_test.ttl', __dir__)
-    ).read
+    file_contents = fixture_file('simple_test.ttl').read
 
     Transaction.with_transaction(@conn, 'test_db') do |transaction_id|
       Query.add(@conn, 'test_db', transaction_id, file_contents)
@@ -202,9 +208,7 @@ class QueryTest < Minitest::Test
   end
 
   def test_remove_triple_from_compressed_file
-    file_contents = File.new(
-      File.expand_path('../../fixtures/simple_test.ttl.gz', __dir__)
-    ).read
+    file_contents = fixture_file('simple_test.ttl.gz').read
 
     Transaction.with_transaction(@conn, 'test_db') do |transaction_id|
       Query.add(@conn, 'test_db', transaction_id, file_contents)

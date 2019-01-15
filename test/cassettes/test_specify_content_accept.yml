@@ -27,13 +27,13 @@ http_interactions:
       Connection:
       - keep-alive
       Sd-Query-Id:
-      - '66'
+      - '75'
       Transfer-Encoding:
       - chunked
       Content-Type:
       - application/ld+json
       Date:
-      - Fri, 11 Jan 2019 22:05:12 GMT
+      - Tue, 15 Jan 2019 19:40:49 GMT
     body:
       encoding: ASCII-8BIT
       string: |-
@@ -123,5 +123,5 @@ http_interactions:
           } ]
         } ]
     http_version: 
-  recorded_at: Fri, 11 Jan 2019 22:05:12 GMT
+  recorded_at: Tue, 15 Jan 2019 19:40:49 GMT
 recorded_with: VCR 4.0.0
