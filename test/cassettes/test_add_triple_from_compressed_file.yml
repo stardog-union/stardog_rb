@@ -1,0 +1,164 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:5820/test_db/transaction/begin
+    body:
+      encoding: UTF-8
+      base64_string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:5820
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - text/plain
+      Content-Length:
+      - '55'
+      Date:
+      - Tue, 15 Jan 2019 17:30:31 GMT
+    body:
+      encoding: ASCII-8BIT
+      base64_string: 'MmY3YmMzNzMtZWFjNC00YWM3LWIyNGQtY2JmNTEzMzVjNDIy
+
+'
+    http_version: 
+  recorded_at: Tue, 15 Jan 2019 17:30:31 GMT
+- request:
+    method: post
+    uri: http://localhost:5820/test_db/2f7bc373-eac4-4ac7-b24d-cbf51335c422/add
+    body:
+      encoding: UTF-8
+      base64_string: |
+        H4sICGoWPlwAA3NpbXBsZV90ZXN0LnR0bAA1jLEKwjAQQHe/ItQ911QXRQqu
+        opMgToU0Hm3kmpTLheDfK1rX93jvMIrMewCKztIYk8Cce/LOio8hgWXxjjDB
+        KWYOlgyY3baG4w83rTos/ZyZdOQBHg6QcMIgCYw2kHL/RCetqm7IL+WDIGMS
+        Hwa1qKrr/pdSii6b76epawP3y/nqRpzsOgl/klbp1RumrxrCsgAAAA==
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:5820
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+      Content-Type:
+      - text/turtle
+      Content-Encoding:
+      - gzip
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      Date:
+      - Tue, 15 Jan 2019 17:30:31 GMT
+    body:
+      encoding: UTF-8
+      base64_string: ''
+    http_version: 
+  recorded_at: Tue, 15 Jan 2019 17:30:31 GMT
+- request:
+    method: post
+    uri: http://localhost:5820/test_db/transaction/commit/2f7bc373-eac4-4ac7-b24d-cbf51335c422
+    body:
+      encoding: UTF-8
+      base64_string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:5820
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '46'
+      Date:
+      - Tue, 15 Jan 2019 17:30:31 GMT
+    body:
+      encoding: ASCII-8BIT
+      base64_string: 'ewogICJhZGRlZCI6IDEsCiAgInJlbW92ZWQiOiAwCn0=
+
+'
+    http_version: 
+  recorded_at: Tue, 15 Jan 2019 17:30:31 GMT
+- request:
+    method: post
+    uri: http://localhost:5820/test_db/query
+    body:
+      encoding: UTF-8
+      base64_string: |
+        YXNrIHdoZXJlIHsgCiAgICAgICAgPGh0dHA6Ly9sb2NhbGhvc3QvcHVibGlj
+        YXRpb25zL2FydGljbGVzL0pvdXJuYWwxLzE5NDAvQXJ0aWNsZTI+CiAgICAg
+        ICAgPGh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvc3ViamVjdD4K
+        ICAgICAgICAiVmVyeSBpbnRlcmVzdGluZyBzdWJqZWN0Il5ePGh0dHA6Ly93
+        d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hI3N0cmluZz4gLgogICAgIH0=
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - text/boolean
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:5820
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+      Content-Type:
+      - application/sparql-query
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Sd-Query-Id:
+      - '114'
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - text/boolean
+      Date:
+      - Tue, 15 Jan 2019 17:30:31 GMT
+    body:
+      encoding: ASCII-8BIT
+      base64_string: 'dHJ1ZQ==
+
+'
+    http_version: 
+  recorded_at: Tue, 15 Jan 2019 17:30:31 GMT
+recorded_with: VCR 4.0.0

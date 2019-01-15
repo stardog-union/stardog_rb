@@ -44,9 +44,34 @@ module Stardog
         type = Query.query_type(query)
         resource = type == 'update' ? 'update' : 'query'
         content_type = params.delete('accept') || Query.content_type(query)
-        request = conn.post_request(query, params, database, resource)
+        transaction_id = params.delete('transaction_id')
+        request = conn.post_request(
+          query, params, *[database, transaction_id, resource].compact
+        )
         request.content_type = "application/sparql-#{resource}"
         conn.response(request, content_type)
+      end
+
+      def add(conn, database, transaction_id, content, params = {})
+        content_type = params.delete('content_type') || 'text/turtle'
+        encoding = params.delete('encoding')
+        request = conn.post_request(
+          content, params, database, transaction_id, 'add'
+        )
+        request.content_type = content_type
+        request['Content-Encoding'] = encoding if encoding
+        conn.response(request, '*/*')
+      end
+
+      def remove(conn, database, transaction_id, content, params = {})
+        content_type = params.delete('content_type') || 'text/turtle'
+        encoding = params.delete('encoding')
+        request = conn.post_request(
+          content, params, database, transaction_id, 'remove'
+        )
+        request.content_type = content_type
+        request['Content-Encoding'] = encoding if encoding
+        conn.response(request, '*/*')
       end
     end
   end

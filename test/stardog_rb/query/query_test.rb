@@ -2,18 +2,43 @@ require 'test_helper'
 require 'stardog_rb'
 
 class QueryTest < Minitest::Test
+  Query = Stardog::Query
+  Transaction = Stardog::Db::Transaction
+
+  TRIPLE = %(
+        <http://localhost/publications/articles/Journal1/1940/Article2>
+        <http://purl.org/dc/elements/1.1/subject>
+        "Very interesting subject"^^<http://www.w3.org/2001/XMLSchema#string> .
+    ).freeze
+
   def setup
     @conn = Stardog::Connection.new
-    VCR.insert_cassette name
+
+    if name.include?('compressed')
+      VCR.insert_cassette(name, preserve_exact_body_bytes: true)
+    else
+      VCR.insert_cassette name
+    end
   end
 
   def teardown
     VCR.eject_cassette
   end
 
+  def in_db?(triple, params = {})
+    name = params.delete('name')
+    query = if name
+              "ask where { graph <#{name}> { #{triple} } }"
+            else
+              "ask where { #{triple} }"
+            end
+    response = Query.execute(@conn, 'test_db', query, params)
+    response.code == '200' && response.body == 'true'
+  end
+
   def test_select_query
     query = 'select * { ?album a :Album . }'
-    response = Stardog::Query.execute(@conn, 'test_db', query)
+    response = Query.execute(@conn, 'test_db', query)
     json_response = JSON.parse(response.body)
     assert response.code == '200'
     assert response.content_type == 'application/sparql-results+json'
@@ -22,7 +47,7 @@ class QueryTest < Minitest::Test
 
   def test_select_with_named_graph
     query = 'select * where { graph <movie:starwars> { ?c a :Human } }'
-    response = Stardog::Query.execute(@conn, 'test_db', query)
+    response = Query.execute(@conn, 'test_db', query)
     json_response = JSON.parse(response.body)
     assert response.code == '200'
     assert response.content_type == 'application/sparql-results+json'
@@ -31,7 +56,7 @@ class QueryTest < Minitest::Test
 
   def test_specify_content_accept
     query = 'construct where { ?s ?p ?o }'
-    response = Stardog::Query.execute(
+    response = Query.execute(
       @conn, 'test_db', query, 'accept' => 'application/ld+json'
     )
     assert response.code == '200'
@@ -40,7 +65,7 @@ class QueryTest < Minitest::Test
 
   def test_query_limit_param
     query = 'select * where { graph <movie:starwars> { ?c a :Human } }'
-    response = Stardog::Query.execute(@conn, 'test_db', query, 'limit' => 3)
+    response = Query.execute(@conn, 'test_db', query, 'limit' => 3)
     json_response = JSON.parse(response.body)
     assert response.code == '200'
     assert response.content_type == 'application/sparql-results+json'
@@ -49,7 +74,7 @@ class QueryTest < Minitest::Test
 
   def test_ask_query_true
     query = 'ask { graph <movie:starwars> {:luke a :Human }}'
-    response = Stardog::Query.execute(@conn, 'test_db', query)
+    response = Query.execute(@conn, 'test_db', query)
     assert response.code == '200'
     assert response.content_type == 'text/boolean'
     assert response.body == 'true'
@@ -57,7 +82,7 @@ class QueryTest < Minitest::Test
 
   def test_ask_query_false
     query = 'ask { graph <movie:starwars> {:luke a :Droid }}'
-    response = Stardog::Query.execute(@conn, 'test_db', query)
+    response = Query.execute(@conn, 'test_db', query)
     assert response.code == '200'
     assert response.content_type == 'text/boolean'
     assert response.body == 'false'
@@ -65,18 +90,154 @@ class QueryTest < Minitest::Test
 
   def test_construct_query
     query = 'construct where { ?s ?p ?o }'
-    response = Stardog::Query.execute(@conn, 'test_db', query)
+    response = Query.execute(@conn, 'test_db', query)
     assert response.code == '200'
     assert response.content_type == 'text/turtle'
   end
 
   def test_insert_query
     query = 'insert data { :foo :bar :baz }'
-    response = Stardog::Query.execute(@conn, 'test_db', query)
+    response = Query.execute(@conn, 'test_db', query)
     assert response.code == '200'
     select_q = 'select * { :foo ?p ?o }'
-    response = Stardog::Query.execute(@conn, 'test_db', select_q)
+    response = Query.execute(@conn, 'test_db', select_q)
     json_response = JSON.parse(response.body)
     assert json_response['results']['bindings'].length == 1
+  end
+
+  def test_add_triple_in_transaction_and_commit
+    Transaction.with_transaction(@conn, 'test_db') do |transaction_id|
+      Query.add(@conn, 'test_db', transaction_id, TRIPLE)
+    end
+
+    assert in_db?(TRIPLE)
+  end
+
+  def test_add_triple_in_transaction_and_rollback
+    transaction_id = Transaction.begin(@conn, 'test_db').body
+    Query.add(@conn, 'test_db', transaction_id, TRIPLE)
+    refute in_db?(TRIPLE) # transaction in progress
+    Transaction.rollback(@conn, 'test_db', transaction_id)
+    refute in_db?(TRIPLE)
+  end
+
+  def test_remove_triple_in_transaction_and_commit
+    Transaction.with_transaction(@conn, 'test_db') do |transaction_id|
+      Query.add(@conn, 'test_db', transaction_id, TRIPLE)
+    end
+
+    assert in_db?(TRIPLE)
+
+    Transaction.with_transaction(@conn, 'test_db') do |transaction_id|
+      Query.remove(@conn, 'test_db', transaction_id, TRIPLE)
+    end
+
+    refute in_db?(TRIPLE)
+  end
+
+  def test_add_named_graph
+    Transaction.with_transaction(@conn, 'test_db') do |transaction_id|
+      Query.add(
+        @conn, 'test_db', transaction_id, TRIPLE, 'graph-uri' => 'stardog:test'
+      )
+    end
+
+    refute in_db?(TRIPLE) # must specify graph name
+    assert in_db?(TRIPLE, 'name' => 'stardog:test')
+  end
+
+  def test_remove_named_graph
+    Transaction.with_transaction(@conn, 'test_db') do |t_id|
+      Query.add(@conn, 'test_db', t_id, TRIPLE, 'graph-uri' => 'sd:test')
+    end
+    assert in_db?(TRIPLE, 'name' => 'sd:test')
+
+    Transaction.with_transaction(@conn, 'test_db') do |t_id|
+      Query.remove(@conn, 'test_db', t_id, TRIPLE, 'graph-uri' => 'sd:test')
+    end
+    refute in_db?(TRIPLE, 'name' => 'sd:test')
+  end
+
+  def test_add_triple_from_file
+    file = File.new(
+      File.expand_path('../../fixtures/simple_test.ttl', __dir__)
+    )
+
+    Transaction.with_transaction(@conn, 'test_db') do |transaction_id|
+      Query.add(@conn, 'test_db', transaction_id, file.read)
+    end
+
+    assert in_db?(TRIPLE)
+  end
+
+  def test_add_triple_from_compressed_file
+    file = File.new(
+      File.expand_path('../../fixtures/simple_test.ttl.gz', __dir__)
+    )
+
+    Transaction.with_transaction(@conn, 'test_db') do |transaction_id|
+      Query.add(
+        @conn, 'test_db', transaction_id, file.read,
+        'encoding' => 'gzip'
+      )
+    end
+
+    assert in_db?(TRIPLE)
+  end
+
+  def test_remove_triple_from_file
+    file_contents = File.new(
+      File.expand_path('../../fixtures/simple_test.ttl', __dir__)
+    ).read
+
+    Transaction.with_transaction(@conn, 'test_db') do |transaction_id|
+      Query.add(@conn, 'test_db', transaction_id, file_contents)
+    end
+
+    Transaction.with_transaction(@conn, 'test_db') do |transaction_id|
+      Query.remove(@conn, 'test_db', transaction_id, file_contents)
+    end
+
+    refute in_db?(TRIPLE)
+  end
+
+  def test_remove_triple_from_compressed_file
+    file_contents = File.new(
+      File.expand_path('../../fixtures/simple_test.ttl.gz', __dir__)
+    ).read
+
+    Transaction.with_transaction(@conn, 'test_db') do |transaction_id|
+      Query.add(@conn, 'test_db', transaction_id, file_contents)
+    end
+
+    Transaction.with_transaction(@conn, 'test_db') do |transaction_id|
+      Query.remove(@conn, 'test_db', transaction_id, file_contents)
+    end
+
+    refute in_db?(TRIPLE)
+  end
+
+  def test_select_in_transaction
+    Transaction.with_transaction(@conn, 'test_db') do |transaction_id|
+      response = Query.execute(
+        @conn, 'test_db', 'select * { ?album a :Album . }',
+        'transaction_id' => transaction_id
+      )
+      assert response.code == '200'
+      assert JSON.parse(response.body)['results']['bindings'].length == 3
+    end
+  end
+
+  def test_insert_in_transaction
+    rubber_soul = '{ :Rubber_Soul rdf:type :Album }'
+    Transaction.with_transaction(@conn, 'test_db') do |transaction_id|
+      Query.execute(
+        @conn, 'test_db', "insert data #{rubber_soul}",
+        'transaction_id' => transaction_id
+      )
+      assert in_db?(rubber_soul, 'transaction_id' => transaction_id) # inside
+      refute in_db?(rubber_soul) # not committed yet to outside world
+    end
+    assert in_db?(rubber_soul)
   end
 end

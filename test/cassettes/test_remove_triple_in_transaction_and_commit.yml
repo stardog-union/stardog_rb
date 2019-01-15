@@ -1,0 +1,307 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:5820/test_db/transaction/begin
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:5820
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - text/plain
+      Content-Length:
+      - '56'
+      Date:
+      - Mon, 14 Jan 2019 22:20:45 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: ea22f1d8-c742-46f4-ae78-d7ae52d81a2b
+    http_version: 
+  recorded_at: Mon, 14 Jan 2019 22:20:45 GMT
+- request:
+    method: post
+    uri: http://localhost:5820/test_db/ea22f1d8-c742-46f4-ae78-d7ae52d81a2b/add
+    body:
+      encoding: UTF-8
+      string: "\n        <http://localhost/publications/articles/Journal1/1940/Article2>\n
+        \       <http://purl.org/dc/elements/1.1/subject>\n        \"Very interesting
+        subject\"^^<http://www.w3.org/2001/XMLSchema#string> .\n    "
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:5820
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+      Content-Type:
+      - text/turtle
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      Date:
+      - Mon, 14 Jan 2019 22:20:45 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Mon, 14 Jan 2019 22:20:45 GMT
+- request:
+    method: post
+    uri: http://localhost:5820/test_db/transaction/commit/ea22f1d8-c742-46f4-ae78-d7ae52d81a2b
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:5820
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '46'
+      Date:
+      - Mon, 14 Jan 2019 22:20:45 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "added": 1,
+          "removed": 0
+        }
+    http_version: 
+  recorded_at: Mon, 14 Jan 2019 22:20:45 GMT
+- request:
+    method: post
+    uri: http://localhost:5820/test_db/query
+    body:
+      encoding: UTF-8
+      string: "ask where { \n        <http://localhost/publications/articles/Journal1/1940/Article2>\n
+        \       <http://purl.org/dc/elements/1.1/subject>\n        \"Very interesting
+        subject\"^^<http://www.w3.org/2001/XMLSchema#string> .\n     }"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - text/boolean
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:5820
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+      Content-Type:
+      - application/sparql-query
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Sd-Query-Id:
+      - '88'
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - text/boolean
+      Date:
+      - Mon, 14 Jan 2019 22:20:45 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: 'true'
+    http_version: 
+  recorded_at: Mon, 14 Jan 2019 22:20:45 GMT
+- request:
+    method: post
+    uri: http://localhost:5820/test_db/transaction/begin
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:5820
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - text/plain
+      Content-Length:
+      - '56'
+      Date:
+      - Mon, 14 Jan 2019 22:20:45 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: cef0a71d-0a06-4997-ab70-d4e4e321574c
+    http_version: 
+  recorded_at: Mon, 14 Jan 2019 22:20:45 GMT
+- request:
+    method: post
+    uri: http://localhost:5820/test_db/cef0a71d-0a06-4997-ab70-d4e4e321574c/remove
+    body:
+      encoding: UTF-8
+      string: "\n        <http://localhost/publications/articles/Journal1/1940/Article2>\n
+        \       <http://purl.org/dc/elements/1.1/subject>\n        \"Very interesting
+        subject\"^^<http://www.w3.org/2001/XMLSchema#string> .\n    "
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:5820
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+      Content-Type:
+      - text/turtle
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      Date:
+      - Mon, 14 Jan 2019 22:20:45 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Mon, 14 Jan 2019 22:20:45 GMT
+- request:
+    method: post
+    uri: http://localhost:5820/test_db/transaction/commit/cef0a71d-0a06-4997-ab70-d4e4e321574c
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:5820
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '46'
+      Date:
+      - Mon, 14 Jan 2019 22:20:45 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "added": 0,
+          "removed": 1
+        }
+    http_version: 
+  recorded_at: Mon, 14 Jan 2019 22:20:45 GMT
+- request:
+    method: post
+    uri: http://localhost:5820/test_db/query
+    body:
+      encoding: UTF-8
+      string: "ask where { \n        <http://localhost/publications/articles/Journal1/1940/Article2>\n
+        \       <http://purl.org/dc/elements/1.1/subject>\n        \"Very interesting
+        subject\"^^<http://www.w3.org/2001/XMLSchema#string> .\n     }"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - text/boolean
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:5820
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+      Content-Type:
+      - application/sparql-query
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Sd-Query-Id:
+      - '89'
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - text/boolean
+      Date:
+      - Mon, 14 Jan 2019 22:20:45 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: 'false'
+    http_version: 
+  recorded_at: Mon, 14 Jan 2019 22:20:45 GMT
+recorded_with: VCR 4.0.0
