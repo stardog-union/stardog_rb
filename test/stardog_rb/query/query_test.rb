@@ -126,7 +126,7 @@ class QueryTest < Minitest::Test
   end
 
   def test_add_triple_in_transaction_and_rollback
-    transaction_id = Transaction.begin(@conn, 'test_db').body
+    transaction_id = Transaction.begin(@conn, 'test_db')
     Query.add(@conn, 'test_db', transaction_id, TRIPLE)
     refute in_db?(TRIPLE) # transaction in progress
     Transaction.rollback(@conn, 'test_db', transaction_id)

@@ -26,12 +26,11 @@ class TransactionTest < Minitest::Test
 
   def test_begin_transaction
     response = Transaction.begin(@conn, 'test_db')
-    assert response.code == '200'
-    assert guid?(response.body)
+    assert guid?(response)
   end
 
   def test_rollback_empty_transaction
-    transaction_id = Transaction.begin(@conn, 'test_db').body
+    transaction_id = Transaction.begin(@conn, 'test_db')
     rollback_response = Transaction.rollback(
       @conn, 'test_db', transaction_id
     )
@@ -40,7 +39,7 @@ class TransactionTest < Minitest::Test
   end
 
   def test_commit_empty_transaction
-    transaction_id = Transaction.begin(@conn, 'test_db').body
+    transaction_id = Transaction.begin(@conn, 'test_db')
     commit_response = Transaction.rollback(
       @conn, 'test_db', transaction_id
     )
