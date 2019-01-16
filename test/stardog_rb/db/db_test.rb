@@ -30,11 +30,12 @@ class DbTest < Minitest::Test
   end
 
   def test_db_list
-    response = Db.list(@conn)
-    response_json = JSON.parse(response.body)
-    assert response.code == '200'
-    assert response.content_type == 'application/json'
-    assert response_json.key?('databases')
+    empty = Db.list(@conn)
+    assert empty.empty?
+    Db.create(@conn, 'test_db')
+    list = Db.list(@conn)
+    assert list.size == 1
+    assert list.include?('test_db')
   end
 
   def test_db_create

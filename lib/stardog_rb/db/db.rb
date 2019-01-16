@@ -4,7 +4,8 @@ module Stardog
     class << self
       def list(conn)
         request = conn.get_request('admin', 'databases')
-        conn.response(request, 'application/json')
+        response = conn.response(request, 'application/json')
+        JSON.parse(response.body)['databases']
       end
 
       def form_filenames(files)

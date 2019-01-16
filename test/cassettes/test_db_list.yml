@@ -29,10 +29,82 @@ http_interactions:
       Content-Length:
       - '36'
       Date:
-      - Tue, 15 Jan 2019 19:40:40 GMT
+      - Wed, 16 Jan 2019 16:45:50 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"databases":[]}'
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 19:40:40 GMT
+  recorded_at: Wed, 16 Jan 2019 16:45:50 GMT
+- request:
+    method: post
+    uri: http://localhost:5820/admin/databases
+    body:
+      encoding: UTF-8
+      string: "------MultipartBoundary\r\nContent-Disposition: form-data; name=\"root\"\r\n\r\n{\"dbname\":\"test_db\",\"options\":{},\"files\":[]}\r\n------MultipartBoundary--\r\n"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:5820
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+      Content-Type:
+      - multipart/form-data; boundary=----MultipartBoundary
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Connection:
+      - keep-alive
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 16 Jan 2019 16:45:51 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"message":"Successfully created database ''test_db''.\n"}'
+    http_version: 
+  recorded_at: Wed, 16 Jan 2019 16:45:51 GMT
+- request:
+    method: get
+    uri: http://localhost:5820/admin/databases
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:5820
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '45'
+      Date:
+      - Wed, 16 Jan 2019 16:45:51 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"databases":["test_db"]}'
+    http_version: 
+  recorded_at: Wed, 16 Jan 2019 16:45:51 GMT
 recorded_with: VCR 4.0.0
