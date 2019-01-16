@@ -13,13 +13,14 @@ module Stardog
             {}, {}, database, 'transaction', 'rollback', transaction_id
           )
           conn.response(request, '*/*')
+          :ok
         end
 
         def commit(conn, database, transaction_id)
           request = conn.post_request(
             {}, {}, database, 'transaction', 'commit', transaction_id
           )
-          conn.response(request, '*/*')
+          Conn.extract_json(conn.response(request, 'application/json').body)
         end
 
         def with_transaction(conn, database)

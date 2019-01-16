@@ -34,16 +34,15 @@ class TransactionTest < Minitest::Test
     rollback_response = Transaction.rollback(
       @conn, 'test_db', transaction_id
     )
-    assert rollback_response.code == '200'
-    assert rollback_response.body == ''
+    assert rollback_response == :ok
   end
 
   def test_commit_empty_transaction
     transaction_id = Transaction.begin(@conn, 'test_db')
-    commit_response = Transaction.rollback(
+    response = Transaction.commit(
       @conn, 'test_db', transaction_id
     )
-    assert commit_response.code == '200'
-    assert commit_response.body == ''
+    assert response['added'].zero?
+    assert response['removed'].zero?
   end
 end
