@@ -13,16 +13,13 @@ class ServerTest < Minitest::Test
 
   def test_that_it_retrieves_the_server_status
     response = Stardog::Server.status(@conn)
-    response_json = JSON.parse(response.body)
-    assert response.code == '200'
-    assert response.content_type = 'application/json'
     # see if a couple of the expected values are in the response
-    assert response_json.key?('dbms.home')
-    assert response_json.key?('system.uptime')
+    assert response.key?('dbms.home')
+    assert response.key?('system.uptime')
   end
 
   def test_server_shutdown
     response = Stardog::Server.shutdown(@conn)
-    assert response.code == '200'
+    assert response == :ok
   end
 end
