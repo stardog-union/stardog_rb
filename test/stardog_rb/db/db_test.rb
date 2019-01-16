@@ -39,21 +39,13 @@ class DbTest < Minitest::Test
 
   def test_db_create
     response = Db.create(@conn, 'test_db')
-    response_json = JSON.parse(response.body)
-    message = response_json['message']
-    assert response.code == '201'
-    assert response.content_type == 'application/json'
-    assert message.start_with?('Successfully created database')
+    assert response.start_with?('Successfully created database')
   end
 
   def test_db_create_with_options
     options = { 'reasoning.type' => 'DL' }
     response = Db.create(@conn, 'test_db', options)
-    response_json = JSON.parse(response.body)
-    message = response_json['message']
-    assert response.code == '201'
-    assert response.content_type == 'application/json'
-    assert message.start_with?('Successfully created database')
+    assert response.start_with?('Successfully created database')
   end
 
   def test_db_create_with_files_including_compressed
@@ -63,19 +55,13 @@ class DbTest < Minitest::Test
       [fixture_file('beatles.ttl'), ''],
       [fixture_file('starwars.ttl.gz'), 'movie:starwars']
     )
-    assert response.code == '201'
-    assert response.content_type == 'application/json'
-    assert JSON.parse(response.body)['message'] =~ /Successfully/
+    assert response =~ /Successfully/
   end
 
   def test_db_drop
     Db.create(@conn, 'test_db')
     response = Db.drop(@conn, 'test_db')
-    response_json = JSON.parse(response.body)
-    message = response_json['message']
-    assert response.code == '200'
-    assert response.content_type == 'application/json'
-    assert message.end_with?('was successfully dropped.')
+    assert response.end_with?('was successfully dropped.')
   end
 
   def test_db_clear
@@ -83,11 +69,11 @@ class DbTest < Minitest::Test
       @conn, 'test_db', {},
       [fixture_file('beatles.ttl'), '']
     )
-    assert Db.size(@conn, 'test_db').body == '28'
+    assert Db.size(@conn, 'test_db') == 28
     Transaction.with_transaction(@conn, 'test_db') do |transaction_id|
       Db.clear(@conn, 'test_db', transaction_id)
     end
-    assert Db.size(@conn, 'test_db').body == '0'
+    assert Db.size(@conn, 'test_db').zero?
   end
 
   def test_db_size
@@ -95,29 +81,19 @@ class DbTest < Minitest::Test
       @conn, 'test_db', {},
       [fixture_file('beatles.ttl'), '']
     )
-    response = Db.size(@conn, 'test_db')
-    assert response.code == '200'
-    assert response.body == '28'
+    Db.size(@conn, 'test_db') == 28
   end
 
   def test_db_online
     Db.create(@conn, 'test_db', 'database.online' => false)
     response = Db.online(@conn, 'test_db')
-    response_json = JSON.parse(response.body)
-    message = response_json['message']
-    assert response.code == '200'
-    assert response.content_type == 'application/json'
-    assert message.end_with?('was successfully brought online')
+    assert response.end_with?('was successfully brought online')
   end
 
   def test_db_offline
     Db.create(@conn, 'test_db')
     response = Db.offline(@conn, 'test_db')
-    response_json = JSON.parse(response.body)
-    message = response_json['message']
-    assert response.code == '200'
-    assert response.content_type == 'application/json'
-    assert message.end_with?('was successfully set offline.')
+    assert response.end_with?('was successfully set offline.')
   end
 
   def test_db_set_options
@@ -128,8 +104,7 @@ class DbTest < Minitest::Test
       'reasoning.type' => 'DL'
     }
     response = Db.set_options(@conn, 'test_db', options)
-    assert response.code == '200'
-    assert response.body =~ /option.*were successfully set/
+    assert response =~ /option.*were successfully set/
   end
 
   def test_db_get_options
@@ -138,10 +113,8 @@ class DbTest < Minitest::Test
       'search.enabled' => nil, 'reasoning.type' => nil
     }
     response = Db.get_options(@conn, 'test_db', options)
-    response_json = JSON.parse(response.body)
-    assert response.code == '200'
-    assert response_json.key? 'search.enabled'
-    assert response_json.key? 'reasoning.type'
-    refute response_json.key? 'database.online'
+    assert response.key? 'search.enabled'
+    assert response.key? 'reasoning.type'
+    refute response.key? 'database.online'
   end
 end

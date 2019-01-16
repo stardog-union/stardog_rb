@@ -16,10 +16,14 @@ module Stardog
         raise Stardog::Error, format_error(response) unless success?(response)
       end
 
-      def extract_json(body, key)
-        result = JSON.parse(body)[key]
-        error_msg = "Expected key #{key} not found in response"
-        raise Stardog::Error, error_msg unless result
+      def extract_json(body, key = nil)
+        result = JSON.parse(body)
+
+        if key
+          result = result[key]
+          error_msg = "Expected key #{key} not found in response"
+          raise Stardog::Error, error_msg unless result
+        end
 
         result
       end
