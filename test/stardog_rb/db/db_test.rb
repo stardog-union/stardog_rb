@@ -39,13 +39,13 @@ class DbTest < Minitest::Test
 
   def test_db_create
     response = Db.create(@conn, 'test_db')
-    assert response.start_with?('Successfully created database')
+    assert response == :ok
   end
 
   def test_db_create_with_options
     options = { 'reasoning.type' => 'DL' }
     response = Db.create(@conn, 'test_db', options)
-    assert response.start_with?('Successfully created database')
+    assert response == :ok
   end
 
   def test_db_create_with_files_including_compressed
@@ -55,13 +55,13 @@ class DbTest < Minitest::Test
       [fixture_file('beatles.ttl'), ''],
       [fixture_file('starwars.ttl.gz'), 'movie:starwars']
     )
-    assert response =~ /Successfully/
+    assert response == :ok
   end
 
   def test_db_drop
     Db.create(@conn, 'test_db')
     response = Db.drop(@conn, 'test_db')
-    assert response.end_with?('was successfully dropped.')
+    assert response == :ok
   end
 
   def test_db_clear
@@ -87,13 +87,13 @@ class DbTest < Minitest::Test
   def test_db_online
     Db.create(@conn, 'test_db', 'database.online' => false)
     response = Db.online(@conn, 'test_db')
-    assert response.end_with?('was successfully brought online')
+    assert response == :ok
   end
 
   def test_db_offline
     Db.create(@conn, 'test_db')
     response = Db.offline(@conn, 'test_db')
-    assert response.end_with?('was successfully set offline.')
+    assert response == :ok
   end
 
   def test_db_set_options
@@ -104,7 +104,7 @@ class DbTest < Minitest::Test
       'reasoning.type' => 'DL'
     }
     response = Db.set_options(@conn, 'test_db', options)
-    assert response =~ /option.*were successfully set/
+    assert response == :ok
   end
 
   def test_db_get_options

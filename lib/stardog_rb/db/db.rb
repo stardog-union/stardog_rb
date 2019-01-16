@@ -26,15 +26,14 @@ module Stardog
         request = conn.post_request_multipart(
           form_data.to_json, {}, files, 'admin', 'databases'
         )
-
-        response = conn.response(request, 'application/json')
-        Conn.extract_json(response.body, 'message')
+        conn.response(request, 'application/json')
+        :ok
       end
 
       def drop(conn, database)
         request = conn.delete_request('admin', 'databases', database)
-        response = conn.response(request)
-        Conn.extract_json(response.body, 'message')
+        conn.response(request)
+        :ok
       end
 
       def clear(conn, database, transaction_id, params = {})
@@ -48,21 +47,23 @@ module Stardog
       def online(conn, database)
         path = ['admin', 'databases', database, 'online']
         request = conn.put_request({}, {}, *path)
-        Conn.extract_json(conn.response(request).body, 'message')
+        conn.response(request)
+        :ok
       end
 
       def offline(conn, database)
         path = ['admin', 'databases', database, 'offline']
         request = conn.put_request({}, {}, *path)
-        Conn.extract_json(conn.response(request).body, 'message')
+        conn.response(request)
+        :ok
       end
 
       def set_options(conn, database, options)
         path = ['admin', 'databases', database, 'options']
         request = conn.post_request(options.to_json, {}, *path)
         request.content_type = 'application/json'
-        response = conn.response(request, 'application/json')
-        Conn.extract_json(response.body, 'message')
+        conn.response(request, 'application/json')
+        :ok
       end
 
       def get_options(conn, database, options)
