@@ -31,12 +31,24 @@ module Stardog
         case query_type(query)
         when 'select', 'paths'
           'application/sparql-results+json'
-        when 'ask', 'update'
+        when 'ask'
           'text/boolean'
         when 'construct', 'describe'
           'text/turtle'
         else
           '*/*'
+        end
+      end
+
+      def extract_query_response(response, query_type, content_type)
+        if content_type.include? 'json'
+          Stardog::Connection.extract_json(response)
+        elsif content_type.include? 'boolean'
+          response == 'true'
+        elsif query_type == 'update'
+          :ok
+        else
+          response
         end
       end
 
@@ -49,7 +61,8 @@ module Stardog
           query, params, *[database, transaction_id, resource].compact
         )
         request.content_type = "application/sparql-#{resource}"
-        conn.response(request, content_type)
+        response = conn.response(request, content_type).body
+        extract_query_response(response, type, content_type)
       end
 
       def add(conn, database, transaction_id, content, params = {})
@@ -61,6 +74,7 @@ module Stardog
         request.content_type = content_type
         request['Content-Encoding'] = encoding if encoding
         conn.response(request, '*/*')
+        :ok
       end
 
       def remove(conn, database, transaction_id, content, params = {})
@@ -72,6 +86,7 @@ module Stardog
         request.content_type = content_type
         request['Content-Encoding'] = encoding if encoding
         conn.response(request, '*/*')
+        :ok
       end
     end
   end

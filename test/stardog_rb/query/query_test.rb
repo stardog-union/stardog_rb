@@ -44,26 +44,19 @@ class QueryTest < Minitest::Test
             else
               "ask where { #{triple} }"
             end
-    response = Query.execute(@conn, 'test_db', query, params)
-    response.code == '200' && response.body == 'true'
+    Query.execute(@conn, 'test_db', query, params) # ask returns bool
   end
 
   def test_select_query
     query = 'select * { ?album a :Album . }'
     response = Query.execute(@conn, 'test_db', query)
-    json_response = JSON.parse(response.body)
-    assert response.code == '200'
-    assert response.content_type == 'application/sparql-results+json'
-    assert json_response['results']['bindings'].length == 3
+    assert response['results']['bindings'].length == 3
   end
 
   def test_select_with_named_graph
     query = 'select * where { graph <movie:starwars> { ?c a :Human } }'
     response = Query.execute(@conn, 'test_db', query)
-    json_response = JSON.parse(response.body)
-    assert response.code == '200'
-    assert response.content_type == 'application/sparql-results+json'
-    assert json_response['results']['bindings'].length == 5
+    assert response['results']['bindings'].length == 5
   end
 
   def test_specify_content_accept
@@ -71,50 +64,40 @@ class QueryTest < Minitest::Test
     response = Query.execute(
       @conn, 'test_db', query, 'accept' => 'application/ld+json'
     )
-    assert response.code == '200'
-    assert response.content_type == 'application/ld+json'
+    assert response.is_a?(Array)
   end
 
   def test_query_limit_param
     query = 'select * where { graph <movie:starwars> { ?c a :Human } }'
     response = Query.execute(@conn, 'test_db', query, 'limit' => 3)
-    json_response = JSON.parse(response.body)
-    assert response.code == '200'
-    assert response.content_type == 'application/sparql-results+json'
-    assert json_response['results']['bindings'].length == 3
+    assert response['results']['bindings'].length == 3
   end
 
   def test_ask_query_true
     query = 'ask { graph <movie:starwars> {:luke a :Human }}'
     response = Query.execute(@conn, 'test_db', query)
-    assert response.code == '200'
-    assert response.content_type == 'text/boolean'
-    assert response.body == 'true'
+    assert response == true
   end
 
   def test_ask_query_false
     query = 'ask { graph <movie:starwars> {:luke a :Droid }}'
     response = Query.execute(@conn, 'test_db', query)
-    assert response.code == '200'
-    assert response.content_type == 'text/boolean'
-    assert response.body == 'false'
+    assert response == false
   end
 
   def test_construct_query
     query = 'construct where { ?s ?p ?o }'
     response = Query.execute(@conn, 'test_db', query)
-    assert response.code == '200'
-    assert response.content_type == 'text/turtle'
+    assert response.include?('<http://api.stardog.com/The_Beatles>')
   end
 
   def test_insert_query
     query = 'insert data { :foo :bar :baz }'
     response = Query.execute(@conn, 'test_db', query)
-    assert response.code == '200'
+    assert response == :ok
     select_q = 'select * { :foo ?p ?o }'
-    response = Query.execute(@conn, 'test_db', select_q)
-    json_response = JSON.parse(response.body)
-    assert json_response['results']['bindings'].length == 1
+    select_response = Query.execute(@conn, 'test_db', select_q)
+    assert select_response['results']['bindings'].length == 1
   end
 
   def test_add_triple_in_transaction_and_commit
@@ -230,8 +213,7 @@ class QueryTest < Minitest::Test
         @conn, 'test_db', 'select * { ?album a :Album . }',
         'transaction_id' => transaction_id
       )
-      assert response.code == '200'
-      assert JSON.parse(response.body)['results']['bindings'].length == 3
+      assert response['results']['bindings'].length == 3
     end
   end
 
