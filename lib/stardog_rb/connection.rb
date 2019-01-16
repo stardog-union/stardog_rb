@@ -3,6 +3,19 @@ require 'net/http'
 module Stardog
   # Hold connection information
   class Connection
+    class << self
+      def format_error(response)
+        "#{response.code}: #{response.body}"
+      end
+
+      def success?(response)
+        response.code =~ /^2\d{2}$/
+      end
+
+      def raise_on_error(response)
+        raise Stardog::Error, format_error(response) unless success?(response)
+      end
+    end
     # Use Stardog server default settings if nothing provided
     def initialize(params = {})
       @endpoint = params.fetch(:endpoint, 'http://localhost:5820')
@@ -58,7 +71,9 @@ module Stardog
     def response(request, accept = '*/*')
       Net::HTTP.start(@endpoint_uri.host, @endpoint_uri.port) do |http|
         request['Accept'] = accept
-        http.request(request)
+        response = http.request(request)
+        self.class.raise_on_error(response)
+        response
       end
     end
   end

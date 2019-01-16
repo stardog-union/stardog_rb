@@ -29,17 +29,17 @@ http_interactions:
       Content-Length:
       - '56'
       Date:
-      - Tue, 15 Jan 2019 19:40:50 GMT
+      - Wed, 16 Jan 2019 18:29:19 GMT
     body:
       encoding: ASCII-8BIT
-      base64_string: 'Mjg1YjQ5NjAtMzVkZC00MjkyLTk5ODctNTA1ZGE4YWM1NTYw
+      base64_string: 'ZjM2YTU4NmUtN2I5ZC00MjE0LTg5NDYtMDc2ZjE4NjBmNGI2
 
 '
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 19:40:50 GMT
+  recorded_at: Wed, 16 Jan 2019 18:29:19 GMT
 - request:
     method: post
-    uri: http://localhost:5820/test_db/285b4960-35dd-4292-9987-505da8ac5560/add
+    uri: http://localhost:5820/test_db/f36a586e-7b9d-4214-8946-076f1860f4b6/add
     body:
       encoding: UTF-8
       base64_string: |
@@ -60,29 +60,27 @@ http_interactions:
       - Basic YWRtaW46YWRtaW4=
       Content-Type:
       - text/turtle
+      Content-Encoding:
+      - gzip
   response:
     status:
-      code: 400
-      message: Bad Request
+      code: 200
+      message: OK
     headers:
       Connection:
       - keep-alive
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json
+      Content-Length:
+      - '0'
       Date:
-      - Tue, 15 Jan 2019 19:40:50 GMT
+      - Wed, 16 Jan 2019 18:29:19 GMT
     body:
-      encoding: ASCII-8BIT
-      base64_string: |
-        eyJtZXNzYWdlIjoiRXhwZWN0ZWQgYW4gUkRGIHZhbHVlIGhlcmUsIGZvdW5k
-        ICdcdTAwMWYnIFtMMV0ifQ==
+      encoding: UTF-8
+      base64_string: ''
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 19:40:50 GMT
+  recorded_at: Wed, 16 Jan 2019 18:29:19 GMT
 - request:
     method: post
-    uri: http://localhost:5820/test_db/transaction/commit/285b4960-35dd-4292-9987-505da8ac5560
+    uri: http://localhost:5820/test_db/transaction/commit/f36a586e-7b9d-4214-8946-076f1860f4b6
     body:
       encoding: UTF-8
       base64_string: ''
@@ -99,27 +97,24 @@ http_interactions:
       - Basic YWRtaW46YWRtaW4=
   response:
     status:
-      code: 404
-      message: Not Found
+      code: 200
+      message: OK
     headers:
       Connection:
       - keep-alive
-      Sd-Error-Code:
-      - UnknownTx
-      Content-Length:
-      - '108'
       Content-Type:
       - application/json
+      Content-Length:
+      - '46'
       Date:
-      - Tue, 15 Jan 2019 19:40:50 GMT
+      - Wed, 16 Jan 2019 18:29:19 GMT
     body:
       encoding: ASCII-8BIT
-      base64_string: |
-        eyJtZXNzYWdlIjoiMjg1YjQ5NjAtMzVkZC00MjkyLTk5ODctNTA1ZGE4YWM1
-        NTYwIGlzIG5vdCBhIGtub3duIHRyYW5zYWN0aW9uLiIsImNvZGUiOiJVbmtu
-        b3duVHgifQ==
+      base64_string: 'ewogICJhZGRlZCI6IDEsCiAgInJlbW92ZWQiOiAwCn0=
+
+'
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 19:40:50 GMT
+  recorded_at: Wed, 16 Jan 2019 18:29:19 GMT
 - request:
     method: post
     uri: http://localhost:5820/test_db/transaction/begin
@@ -149,17 +144,17 @@ http_interactions:
       Content-Length:
       - '56'
       Date:
-      - Tue, 15 Jan 2019 19:40:50 GMT
+      - Wed, 16 Jan 2019 18:29:19 GMT
     body:
       encoding: ASCII-8BIT
-      base64_string: 'OTNlZjgxOWQtMjU0YS00NDcyLWFjNmQtM2JhNjIxNzM2NmI1
+      base64_string: 'YTM1ODNjNGEtZTcxYy00ZDllLWE2NTQtZDY1M2NiNmIwNzM3
 
 '
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 19:40:50 GMT
+  recorded_at: Wed, 16 Jan 2019 18:29:19 GMT
 - request:
     method: post
-    uri: http://localhost:5820/test_db/93ef819d-254a-4472-ac6d-3ba6217366b5/remove
+    uri: http://localhost:5820/test_db/a3583c4a-e71c-4d9e-a654-d653cb6b0737/remove
     body:
       encoding: UTF-8
       base64_string: |
@@ -180,29 +175,27 @@ http_interactions:
       - Basic YWRtaW46YWRtaW4=
       Content-Type:
       - text/turtle
+      Content-Encoding:
+      - gzip
   response:
     status:
-      code: 400
-      message: Bad Request
+      code: 200
+      message: OK
     headers:
       Connection:
       - keep-alive
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json
+      Content-Length:
+      - '0'
       Date:
-      - Tue, 15 Jan 2019 19:40:50 GMT
+      - Wed, 16 Jan 2019 18:29:20 GMT
     body:
-      encoding: ASCII-8BIT
-      base64_string: |
-        eyJtZXNzYWdlIjoiRXhwZWN0ZWQgYW4gUkRGIHZhbHVlIGhlcmUsIGZvdW5k
-        ICdcdTAwMWYnIFtMMV0ifQ==
+      encoding: UTF-8
+      base64_string: ''
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 19:40:50 GMT
+  recorded_at: Wed, 16 Jan 2019 18:29:20 GMT
 - request:
     method: post
-    uri: http://localhost:5820/test_db/transaction/commit/93ef819d-254a-4472-ac6d-3ba6217366b5
+    uri: http://localhost:5820/test_db/transaction/commit/a3583c4a-e71c-4d9e-a654-d653cb6b0737
     body:
       encoding: UTF-8
       base64_string: ''
@@ -219,27 +212,24 @@ http_interactions:
       - Basic YWRtaW46YWRtaW4=
   response:
     status:
-      code: 404
-      message: Not Found
+      code: 200
+      message: OK
     headers:
       Connection:
       - keep-alive
-      Sd-Error-Code:
-      - UnknownTx
-      Content-Length:
-      - '109'
       Content-Type:
       - application/json
+      Content-Length:
+      - '46'
       Date:
-      - Tue, 15 Jan 2019 19:40:50 GMT
+      - Wed, 16 Jan 2019 18:29:20 GMT
     body:
       encoding: ASCII-8BIT
-      base64_string: |
-        eyJtZXNzYWdlIjoiOTNlZjgxOWQtMjU0YS00NDcyLWFjNmQtM2JhNjIxNzM2
-        NmI1IGlzIG5vdCBhIGtub3duIHRyYW5zYWN0aW9uLiIsImNvZGUiOiJVbmtu
-        b3duVHgifQ==
+      base64_string: 'ewogICJhZGRlZCI6IDAsCiAgInJlbW92ZWQiOiAxCn0=
+
+'
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 19:40:50 GMT
+  recorded_at: Wed, 16 Jan 2019 18:29:20 GMT
 - request:
     method: post
     uri: http://localhost:5820/test_db/query
@@ -272,18 +262,18 @@ http_interactions:
       Connection:
       - keep-alive
       Sd-Query-Id:
-      - '77'
+      - '1'
       Transfer-Encoding:
       - chunked
       Content-Type:
       - text/boolean
       Date:
-      - Tue, 15 Jan 2019 19:40:50 GMT
+      - Wed, 16 Jan 2019 18:29:20 GMT
     body:
       encoding: ASCII-8BIT
       base64_string: 'ZmFsc2U=
 
 '
     http_version: 
-  recorded_at: Tue, 15 Jan 2019 19:40:50 GMT
+  recorded_at: Wed, 16 Jan 2019 18:29:20 GMT
 recorded_with: VCR 4.0.0

@@ -19,3 +19,9 @@ def without_vcr
     c.allow_http_connections_when_no_cassette = false
   end
 end
+
+def drop_test_db(conn)
+  Stardog::Db.drop(conn, 'test_db')
+rescue Stardog::Error => e
+  raise e unless e.message.start_with?('404')
+end

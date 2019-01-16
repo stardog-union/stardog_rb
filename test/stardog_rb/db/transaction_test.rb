@@ -7,7 +7,7 @@ class TransactionTest < Minitest::Test
   def setup
     @conn = Stardog::Connection.new
     without_vcr do
-      Stardog::Db.drop(@conn, 'test_db')
+      drop_test_db(@conn)
       Stardog::Db.create(@conn, 'test_db')
     end
     VCR.insert_cassette name

@@ -9,7 +9,7 @@ class DbTest < Minitest::Test
   def prepare_db_without_vcr
     VCR.configure do |c|
       c.allow_http_connections_when_no_cassette = true
-      Stardog::Db.drop(@conn, 'test_db')
+      drop_test_db(@conn)
       c.allow_http_connections_when_no_cassette = false
     end
   end

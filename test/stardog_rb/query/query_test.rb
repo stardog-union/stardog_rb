@@ -13,7 +13,7 @@ class QueryTest < Minitest::Test
 
   def setup_db(conn)
     without_vcr do
-      Stardog::Db.drop(conn, 'test_db')
+      drop_test_db(conn)
       Stardog::Db.create(
         conn, 'test_db', {},
         [fixture_file('beatles.ttl'), ''],
@@ -185,8 +185,7 @@ class QueryTest < Minitest::Test
 
     Transaction.with_transaction(@conn, 'test_db') do |transaction_id|
       Query.add(
-        @conn, 'test_db', transaction_id, file.read,
-        'encoding' => 'gzip'
+        @conn, 'test_db', transaction_id, file.read, 'encoding' => 'gzip'
       )
     end
 
@@ -211,11 +210,15 @@ class QueryTest < Minitest::Test
     file_contents = fixture_file('simple_test.ttl.gz').read
 
     Transaction.with_transaction(@conn, 'test_db') do |transaction_id|
-      Query.add(@conn, 'test_db', transaction_id, file_contents)
+      Query.add(
+        @conn, 'test_db', transaction_id, file_contents, 'encoding' => 'gzip'
+      )
     end
 
     Transaction.with_transaction(@conn, 'test_db') do |transaction_id|
-      Query.remove(@conn, 'test_db', transaction_id, file_contents)
+      Query.remove(
+        @conn, 'test_db', transaction_id, file_contents, 'encoding' => 'gzip'
+      )
     end
 
     refute in_db?(TRIPLE)
