@@ -1,4 +1,3 @@
-require 'json'
 require 'test_helper'
 require 'stardog_rb'
 
