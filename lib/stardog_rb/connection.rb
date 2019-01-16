@@ -15,7 +15,16 @@ module Stardog
       def raise_on_error(response)
         raise Stardog::Error, format_error(response) unless success?(response)
       end
+
+      def extract_json(body, key)
+        result = JSON.parse(body)[key]
+        error_msg = "Expected key #{key} not found in response"
+        raise Stardog::Error, error_msg unless result
+
+        result
+      end
     end
+
     # Use Stardog server default settings if nothing provided
     def initialize(params = {})
       @endpoint = params.fetch(:endpoint, 'http://localhost:5820')

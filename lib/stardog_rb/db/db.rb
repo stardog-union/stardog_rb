@@ -1,11 +1,13 @@
 module Stardog
   # Control databases on the Stardog server
   module Db
+    Conn = Stardog::Connection
+
     class << self
       def list(conn)
         request = conn.get_request('admin', 'databases')
         response = conn.response(request, 'application/json')
-        JSON.parse(response.body)['databases']
+        Conn.extract_json(response.body, 'databases')
       end
 
       def form_filenames(files)
