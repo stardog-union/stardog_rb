@@ -3,6 +3,7 @@ module Stardog
   module Query
     class << self
       def remove_sparql_prologue(query)
+        # consistent with stardog.js approach
         prefix_reg = /prefix[^:]+:\s*<[^>]*>\s*/i
         base_reg = /^((base\s+<[^>]*>\s*)|([\t ]*#([^\n\r]*)))([\r|\r\n|\n])/im
 
