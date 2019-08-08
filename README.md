@@ -308,7 +308,10 @@ responses from the server. This repository has cassette recordings
 included. To run the tests against your running Stardog server, remove
 the cassette files in `test/cassettes`. **WARNING: running the tests
 without the cassettes will remove the database named 'test_db' if
-present.**
+present.** Without the cassettes, tests that happen to run after the
+server shutdown test will fail. Start the stardog server back up and
+restart the tests. The cassette for the shutdown test will be used and
+they should all pass.
 
 ### Console
 Run `bin/console` for an interactive prompt that will allow you to experiment.
